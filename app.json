@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "Shebagam Electricals",
+    "slug": "khata-lite",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "userInterfaceStyle": "automatic"
+    },
+    "android": {
+      "package": "com.shebagam.khatalite",
+      "userInterfaceStyle": "automatic",
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-sharing",
+      "expo-system-ui",
+      "@react-native-community/datetimepicker",
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "Khata uses your contacts to fill in a customer's name and number for you."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Khata uses the camera so you can photograph a bill and attach it to an entry.",
+          "photosPermission": "Khata needs access to your photos so you can attach a bill you already have."
+        }
+      ],
+      "expo-document-picker"
+    ]
+  }
+}
