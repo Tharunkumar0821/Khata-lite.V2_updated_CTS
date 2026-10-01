@@ -51,26 +51,42 @@ export const balanceOf = (txns, pid) =>
 export const cmpDesc = (a, b) => (a.date === b.date ? b.ts - a.ts : a.date < b.date ? 1 : -1);
 export const cmpAsc = (a, b) => -cmpDesc(a, b);
 
-export const balLabel = (b) => (b > 0 ? "You'll get" : b < 0 ? "You'll give" : 'Settled');
+// Accounting wording for a balance. The sign means the same thing for both
+// party types -- positive is always money owed to you -- so this needs no
+// partyType argument. For plainer English swap in 'To receive' / 'To pay'.
+export const balLabel = (b) => (b > 0 ? 'Receivable' : b < 0 ? 'Payable' : 'Settled');
 export const balColorKey = (b) => (b > 0 ? 'green' : b < 0 ? 'red' : 'text');
 
+// Display names for the two entry types, which read differently depending on
+// whether the party is a customer or a supplier:
+//
+//   Button    Party     Stored    Goods   Money   Balance
+//   Sales     customer  gave      out     -       + (they owe you)
+//   Receipt   customer  got       -       in      -
+//   Purchase  supplier  got       in      -       - (you owe them)
+//   Payment   supplier  gave      -       out     +
+//
+// The stored values stay 'gave' and 'got' forever. Renaming them in storage
+// would mean a migration plus breaking every existing backup file and sync
+// document, so this is kept strictly as a display concern.
 export const entryLabel = (type, partyType) =>
   partyType === 'supplier'
     ? (type === 'gave' ? 'Payment' : 'Purchase')
     : (type === 'gave' ? 'Sales' : 'Receipt');
 
+// Short forms for statements and spreadsheet cells, padded to equal width so
+// plain-text statement lines stay in columns.
 export const entryShort = (type, partyType) =>
   partyType === 'supplier'
-    ? (type === 'gave' ? 'Payment' : 'Purch')
-    : (type === 'gave' ? 'Sales' : 'Recd');
+    ? (type === 'gave' ? 'Paid ' : 'Purch')
+    : (type === 'gave' ? 'Sale ' : 'Recd ');
 
 export function statementText(db, party) {
   const txns = db.txns.filter((t) => t.pid === party.id).sort(cmpAsc);
   const b = balanceOf(db.txns, party.id);
   const lines = [`Statement: ${party.name} (${db.business})`, ''];
   txns.forEach((t) => {
-    //lines.push(`${fdate(t.date)}  ${t.type === 'gave' ? 'Gave' : 'Got '}  ${money(t.amount)}${t.note ? '  ' + t.note : ''}`);
-    lines.push(`${fdate(t.date)} ${entryShort(t.type, party.type)} ${money(t.amount)}${t.note ? ' ' + t.note : ''}`);
+    lines.push(`${fdate(t.date)}  ${entryShort(t.type, party.type)}  ${money(t.amount)}${t.note ? '  ' + t.note : ''}`);
   });
   lines.push('', `${balLabel(b)}: ${money(b)}`);
   return lines.join('\n');

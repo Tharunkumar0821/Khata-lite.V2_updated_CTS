@@ -5,17 +5,19 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { useTheme, space, radius, type as T, elevate } from '../theme';
 import { IconBtn, Avatar, Empty, toast } from '../components/ui';
 import { sendToWhatsApp } from '../bills';
-import { money, fdate, dateStr, cmpAsc, cmpDesc, balLabel, balColorKey, entryLabel } from '../utils';
-
-const typeOptions = [
-  { value: 'all', label: 'All entries' },
-  { value: 'gave', label: entryLabel('gave', party.type) },
-  { value: 'got', label: entryLabel('got', party.type) },
-];
+import { money, fdate, dateStr, cmpAsc, cmpDesc, balLabel, balColorKey, entryLabel, entryShort } from '../utils';
 
 export default function LedgerScreen({ db, party, onBack, onEditParty, onEntry, onEditEntry, onViewBill }) {
   const c = useTheme();
   const insets = useSafeAreaInsets();
+
+  // Built per render rather than as a module constant: the labels depend on
+  // this party's type, which does not exist at module load time.
+  const typeOptions = [
+    { value: 'all', label: 'All entries' },
+    { value: 'gave', label: entryLabel('gave', party.type) },
+    { value: 'got', label: entryLabel('got', party.type) },
+  ];
 
   const [startDate, setStartDate] = useState(''); // '' = no lower bound
   const [endDate, setEndDate] = useState('');
@@ -70,7 +72,7 @@ export default function LedgerScreen({ db, party, onBack, onEditParty, onEntry, 
     lines.push('');
     rows.slice().sort(cmpAsc).forEach((t) => {
       const no = t.billNo || t.invoiceNo;
-      lines.push(`${fdate(t.date)}  ${entryShort(t.type. party.type)}  ${money(t.amount)}${t.note ? '  ' + t.note : ''}${no ? '  #' + no : ''}`);
+      lines.push(`${fdate(t.date)}  ${entryShort(t.type, party.type)}  ${money(t.amount)}${t.note ? '  ' + t.note : ''}${no ? '  #' + no : ''}`);
     });
     lines.push(
       '',
@@ -114,18 +116,6 @@ export default function LedgerScreen({ db, party, onBack, onEditParty, onEntry, 
           <Text style={{ color: c.brandInk, opacity: 0.8, fontSize: 13 }}>{'\u2715'}</Text>
         </Pressable>
       ) : null}
-    </Pressable>
-  );
-
-  const RoundBtn = ({ label, color, a11y, onPress }) => (
-    <Pressable
-      onPress={onPress} accessibilityRole="button" accessibilityLabel={a11y}
-      android_ripple={{ color: 'rgba(255,255,255,.25)', borderless: true }}
-      style={({ pressed }) => [{
-        width: 46, height: 46, borderRadius: radius.pill, backgroundColor: color,
-        alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.85 : 1,
-      }, elevate(c, 2)]}>
-      <Text style={{ color: '#fff', fontWeight: '800', fontSize: 21 }}>{label}</Text>
     </Pressable>
   );
 
@@ -192,11 +182,11 @@ export default function LedgerScreen({ db, party, onBack, onEditParty, onEntry, 
             <Text style={{ ...T.money, color: c.text, marginTop: 1 }}>{count}</Text>
           </View>
           <View style={{ flex: 1, alignItems: 'flex-end' }}>
-            <Text style={{ ...T.caption, color: c.muted }}>{entryLabel('gave',party.type)}</Text>
+            <Text numberOfLines={1} style={{ ...T.caption, color: c.muted }}>{entryLabel('gave', party.type)}</Text>
             <Text style={{ ...T.money, color: c.red, marginTop: 1 }}>{money(totalGave)}</Text>
           </View>
           <View style={{ flex: 1, alignItems: 'flex-end' }}>
-            <Text style={{ ...T.caption, color: c.muted }}>{entryLabel('got',party.type)}</Text>
+            <Text numberOfLines={1} style={{ ...T.caption, color: c.muted }}>{entryLabel('got', party.type)}</Text>
             <Text style={{ ...T.money, color: c.green, marginTop: 1 }}>{money(totalGot)}</Text>
           </View>
         </View>
@@ -220,7 +210,7 @@ export default function LedgerScreen({ db, party, onBack, onEditParty, onEntry, 
             title={filtered ? 'Nothing matches' : 'No entries yet'}
             body={filtered
               ? 'Try clearing the date range, the search box, or the filter.'
-              : 'Use the red and green buttons below to record what you gave and got.'}
+              : `Use the ${entryLabel('gave', party.type)} and ${entryLabel('got', party.type)} buttons below to add one.`}
           />
         }
         renderItem={({ item }) => (
@@ -277,7 +267,8 @@ export default function LedgerScreen({ db, party, onBack, onEditParty, onEntry, 
         paddingHorizontal: space.md, paddingTop: space.md, paddingBottom: space.sm,
         backgroundColor: c.surface, borderTopWidth: 1, borderTopColor: c.lineSoft,
       }, elevate(c, 2)]}>
-        {/* Primary actions: what this party's two entry types are called. */}
+        {/* Primary actions, named for this party type. A bare minus and plus
+            were unguessable once the concepts are Sales and Payment. */}
         <View style={{ flexDirection: 'row', gap: space.sm, marginBottom: space.sm }}>
           <Pressable
             onPress={() => onEntry('gave')} accessibilityRole="button"
@@ -287,7 +278,7 @@ export default function LedgerScreen({ db, party, onBack, onEditParty, onEntry, 
               flex: 1, height: 48, backgroundColor: c.red, borderRadius: radius.md,
               alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.88 : 1,
             }, elevate(c, 1)]}>
-            <Text style={{ color: '#fff', fontWeight: '700', fontSize: 15 }}>
+            <Text numberOfLines={1} style={{ color: '#fff', fontWeight: '700', fontSize: 15 }}>
               {entryLabel('gave', party.type)}
             </Text>
           </Pressable>
@@ -299,13 +290,13 @@ export default function LedgerScreen({ db, party, onBack, onEditParty, onEntry, 
               flex: 1, height: 48, backgroundColor: c.green, borderRadius: radius.md,
               alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.88 : 1,
             }, elevate(c, 1)]}>
-            <Text style={{ color: '#fff', fontWeight: '700', fontSize: 15 }}>
+            <Text numberOfLines={1} style={{ color: '#fff', fontWeight: '700', fontSize: 15 }}>
               {entryLabel('got', party.type)}
             </Text>
           </Pressable>
         </View>
 
-        {/* Secondary actions. */}
+        {/* Secondary actions, shorter so the hierarchy reads without extra chrome. */}
         <View style={{ flexDirection: 'row', gap: space.sm, alignItems: 'center' }}>
           <Pressable
             onPress={doDownload} accessibilityRole="button"

@@ -2,7 +2,7 @@ import { Alert } from 'react-native';
 import * as XLSX from 'xlsx';
 import * as FileSystem from 'expo-file-system/legacy';
 import * as Sharing from 'expo-sharing';
-import { balanceOf, cmpAsc, fdate } from './utils';
+import { balanceOf, cmpAsc, fdate, balLabel, entryLabel } from './utils';
 
 // Exports the parties and entries of one business to a .xlsx file
 // and opens the share sheet so it can be sent by WhatsApp, email, etc.
@@ -13,6 +13,7 @@ export async function exportExcel(db, businessName) {
       Type: p.type === 'supplier' ? 'Supplier' : 'Customer',
       Phone: p.phone || '',
       Balance: balanceOf(db.txns, p.id),
+      Status: balLabel(balanceOf(db.txns, p.id)),
     }));
 
     const byId = Object.fromEntries(db.parties.map((p) => [p.id, p]));
@@ -25,8 +26,9 @@ export async function exportExcel(db, businessName) {
           Date: fdate(t.date),
           Party: p ? p.name : '(deleted)',
           Type: p ? (p.type === 'supplier' ? 'Supplier' : 'Customer') : '',
-          'Out': t.type === 'gave' ? t.amount : '',
-          'In': t.type === 'got' ? t.amount : '',
+          Transaction: entryLabel(t.type, p ? p.type : 'customer'),
+          Out: t.type === 'gave' ? t.amount : '',
+          In: t.type === 'got' ? t.amount : '',
           Note: t.note || '',
           'Bill No': t.billNo || '',
           'Invoice No': t.invoiceNo || '',

@@ -55,12 +55,12 @@ export default function HomeScreen({ db, tab, setTab, q, setQ, onOpen, onAdd, on
       }, elevate(c, 1)]}>
         <View style={{ flexDirection: 'row' }}>
           <View style={{ flex: 1, paddingVertical: space.lg, paddingHorizontal: space.lg }}>
-            <Text style={{ ...T.caption, color: c.muted }}>You'll get</Text>
+            <Text style={{ ...T.caption, color: c.muted }}>Receivable</Text>
             <Text numberOfLines={1} style={{ ...T.amount, color: c.green, marginTop: 3 }}>{money(totals.get)}</Text>
           </View>
           <View style={{ width: 1, backgroundColor: c.lineSoft, marginVertical: space.md }} />
           <View style={{ flex: 1, paddingVertical: space.lg, paddingHorizontal: space.lg }}>
-            <Text style={{ ...T.caption, color: c.muted }}>You'll give</Text>
+            <Text style={{ ...T.caption, color: c.muted }}>Payable</Text>
             <Text numberOfLines={1} style={{ ...T.amount, color: c.red, marginTop: 3 }}>{money(totals.give)}</Text>
           </View>
         </View>
@@ -68,7 +68,7 @@ export default function HomeScreen({ db, tab, setTab, q, setQ, onOpen, onAdd, on
           <Text style={{ ...T.caption, color: c.muted }}>
             {totals.count} {totals.count === 1 ? plural.slice(0, -1) : plural}
             {totals.get - totals.give !== 0
-              ? `  \u00B7  net ${money(totals.get - totals.give)} ${totals.get >= totals.give ? 'in your favour' : 'owed by you'}`
+              ? `  \u00B7  net ${money(totals.get - totals.give)} ${totals.get >= totals.give ? 'receivable' : 'payable'}`
               : ''}
           </Text>
         </View>

@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Sheet, Field, Seg, Btn, ErrorText, Chip, Note, SectionLabel, toast } from './ui';
 import { useTheme, space, radius, type as T, elevate } from '../theme';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { todayStr, daysAgoStr, dateStr, fdate, entryLabel} from '../utils';
+import { todayStr, daysAgoStr, dateStr, fdate, entryLabel } from '../utils';
 import { billUri, pickBill, deleteBill, sendToWhatsApp } from '../bills';
 import { pickContact } from '../contacts';
 import { saveBackupFile, loadBackupFile, backupErrorText } from '../backup';
@@ -154,7 +154,15 @@ export function EntrySheet({ entry, defaultType, partyType, onSave, onDelete, on
     <Sheet title={entry ? 'Edit entry' : entryLabel(type, partyType)} onClose={cancel}>
       <Seg
         value={type} onChange={setType}
-        options={[{ value: 'gave', label: entryLabel('gave', partyType) }, { value: 'got', label: entryLabel('got', partyType)}]}
+        options={partyType === 'supplier'
+          ? [
+              { value: 'got', label: entryLabel('got', partyType) },
+              { value: 'gave', label: entryLabel('gave', partyType) },
+            ]
+          : [
+              { value: 'gave', label: entryLabel('gave', partyType) },
+              { value: 'got', label: entryLabel('got', partyType) },
+            ]}
       />
 
       <View style={{
@@ -241,7 +249,11 @@ export function EntrySheet({ entry, defaultType, partyType, onSave, onDelete, on
         {entry
           ? <Btn kind="danger" label="Delete" onPress={onDelete} style={{ flex: 1 }} />
           : <Btn kind="ghost" label="Cancel" onPress={cancel} style={{ flex: 1 }} />}
-        <Btn kind={type === 'gave' ? 'red' : 'green'} label="Save entry" onPress={save} style={{ flex: 1.3 }} />
+        <Btn
+          kind={type === 'gave' ? 'red' : 'green'}
+          label={'Save ' + entryLabel(type, partyType).toLowerCase()}
+          onPress={save} style={{ flex: 1.3 }}
+        />
       </View>
     </Sheet>
   );

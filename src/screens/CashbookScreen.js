@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { View, Text, FlatList, Pressable, TextInput } from 'react-native';
 import { useTheme, space, radius, type as T, elevate } from '../theme';
 import { Header, Chip, Empty, SectionLabel, IconBtn } from '../components/ui';
-import { money, fdate, todayStr, daysAgoStr, cmpDesc, signedMoney } from '../utils';
+import { money, fdate, todayStr, daysAgoStr, cmpDesc, signedMoney, entryLabel } from '../utils';
 
 const PERIODS = [
   { value: 'today', label: 'Today' },
