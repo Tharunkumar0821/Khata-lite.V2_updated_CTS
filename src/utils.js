@@ -54,12 +54,23 @@ export const cmpAsc = (a, b) => -cmpDesc(a, b);
 export const balLabel = (b) => (b > 0 ? "You'll get" : b < 0 ? "You'll give" : 'Settled');
 export const balColorKey = (b) => (b > 0 ? 'green' : b < 0 ? 'red' : 'text');
 
+export const entryLabel = (type, partyType) =>
+  partyType === 'supplier'
+    ? (type === 'gave' ? 'Payment' : 'Purchase')
+    : (type === 'gave' ? 'Sales' : 'Receipt');
+
+export const entryShort = (type, partyType) =>
+  partyType === 'supplier'
+    ? (type === 'gave' ? 'Payment' : 'Purch')
+    : (type === 'gave' ? 'Sales' : 'Recd');
+
 export function statementText(db, party) {
   const txns = db.txns.filter((t) => t.pid === party.id).sort(cmpAsc);
   const b = balanceOf(db.txns, party.id);
   const lines = [`Statement: ${party.name} (${db.business})`, ''];
   txns.forEach((t) => {
-    lines.push(`${fdate(t.date)}  ${t.type === 'gave' ? 'Gave' : 'Got '}  ${money(t.amount)}${t.note ? '  ' + t.note : ''}`);
+    //lines.push(`${fdate(t.date)}  ${t.type === 'gave' ? 'Gave' : 'Got '}  ${money(t.amount)}${t.note ? '  ' + t.note : ''}`);
+    lines.push(`${fdate(t.date)} ${entryShort(t.type, party.type)} ${money(t.amount)}${t.note ? ' ' + t.note : ''}`);
   });
   lines.push('', `${balLabel(b)}: ${money(b)}`);
   return lines.join('\n');

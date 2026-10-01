@@ -12,8 +12,8 @@ const PERIODS = [
 ];
 const TYPES = [
   { value: 'all', label: 'All' },
-  { value: 'gave', label: 'You gave' },
-  { value: 'got', label: 'You got' },
+  { value: 'gave', label: 'Out' },
+  { value: 'got', label: 'In' },
 ];
 
 export default function CashbookScreen({ db, onOpen }) {
@@ -176,7 +176,7 @@ export default function CashbookScreen({ db, onOpen }) {
               <View style={{ flex: 1, minWidth: 0 }}>
                 <Text numberOfLines={1} style={{ ...T.body, fontWeight: '700', color: c.text }}>{item.p.name}</Text>
                 <Text numberOfLines={1} style={{ ...T.caption, color: c.muted, marginTop: 1 }}>
-                  {item.x.note || (item.x.type === 'gave' ? 'You gave' : 'You got')}
+                  {item.x.note || entryLabel(item.x.type, item.p.type)}
                   {item.x.billNo ? `  \u00B7  Bill #${item.x.billNo}` : ''}
                 </Text>
               </View>

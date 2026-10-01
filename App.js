@@ -10,7 +10,7 @@ import { BottomNav, toast } from './src/components/ui';
 import { PartySheet, EntrySheet, BusinessSheet, SettingsSheet, SyncSheet, BackupSheet, BillViewer } from './src/components/Sheets';
 import { deleteBills } from './src/bills';
 import { exportExcel } from './src/excel';
-import { money } from './src/utils';
+import { money, entryLabel } from './src/utils';
 
 export default function App() {
   return (
@@ -142,7 +142,7 @@ function Root() {
         bills={t.bills}
         partyName={owner ? owner.name : ''}
         partyPhone={owner ? owner.phone : ''}
-        amountText={`${t.type === 'gave' ? 'You gave' : 'You got'} ${money(t.amount)}${t.note ? '  \u2022  ' + t.note : ''}`}
+        amountText={`${entryLabel(t.type, owner ? owner.type : 'customer')} ${money(t.amount)}${t.note ? '  \u2022  ' + t.note : ''}`}
         onClose={close}
       />
     ) : null;

@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Sheet, Field, Seg, Btn, ErrorText, Chip, Note, SectionLabel, toast } from './ui';
 import { useTheme, space, radius, type as T, elevate } from '../theme';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { todayStr, daysAgoStr, dateStr, fdate } from '../utils';
+import { todayStr, daysAgoStr, dateStr, fdate, entryLabel} from '../utils';
 import { billUri, pickBill, deleteBill, sendToWhatsApp } from '../bills';
 import { pickContact } from '../contacts';
 import { saveBackupFile, loadBackupFile, backupErrorText } from '../backup';
@@ -151,10 +151,10 @@ export function EntrySheet({ entry, defaultType, partyType, onSave, onDelete, on
   const isYesterday = date === daysAgoStr(1);
 
   return (
-    <Sheet title={entry ? 'Edit entry' : type === 'gave' ? 'You gave' : 'You got'} onClose={cancel}>
+    <Sheet title={entry ? 'Edit entry' : entryLabel(type, partyType)} onClose={cancel}>
       <Seg
         value={type} onChange={setType}
-        options={[{ value: 'gave', label: 'You gave' }, { value: 'got', label: 'You got' }]}
+        options={[{ value: 'gave', label: entryLabel('gave', partyType) }, { value: 'got', label: entryLabel('got', partyType)}]}
       />
 
       <View style={{

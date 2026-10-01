@@ -5,12 +5,12 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { useTheme, space, radius, type as T, elevate } from '../theme';
 import { IconBtn, Avatar, Empty, toast } from '../components/ui';
 import { sendToWhatsApp } from '../bills';
-import { money, fdate, dateStr, cmpAsc, cmpDesc, balLabel, balColorKey } from '../utils';
+import { money, fdate, dateStr, cmpAsc, cmpDesc, balLabel, balColorKey, entryLabel } from '../utils';
 
-const TYPE_OPTIONS = [
+const typeOptions = [
   { value: 'all', label: 'All entries' },
-  { value: 'gave', label: 'You gave' },
-  { value: 'got', label: 'You got' },
+  { value: 'gave', label: entryLabel('gave', party.type) },
+  { value: 'got', label: entryLabel('got', party.type) },
 ];
 
 export default function LedgerScreen({ db, party, onBack, onEditParty, onEntry, onEditEntry, onViewBill }) {
@@ -70,12 +70,12 @@ export default function LedgerScreen({ db, party, onBack, onEditParty, onEntry, 
     lines.push('');
     rows.slice().sort(cmpAsc).forEach((t) => {
       const no = t.billNo || t.invoiceNo;
-      lines.push(`${fdate(t.date)}  ${t.type === 'gave' ? 'Gave' : 'Got '}  ${money(t.amount)}${t.note ? '  ' + t.note : ''}${no ? '  #' + no : ''}`);
+      lines.push(`${fdate(t.date)}  ${entryShort(t.type. party.type)}  ${money(t.amount)}${t.note ? '  ' + t.note : ''}${no ? '  #' + no : ''}`);
     });
     lines.push(
       '',
-      `You gave: ${money(totalGave)}`,
-      `You got:  ${money(totalGot)}`,
+      `${entryLabel('gave', party.type)}: ${money(totalGave)}`,
+      `${entryLabel('got', party.type)}: ${money(totalGot)}`,
       `${balLabel(net)}: ${money(net)}`
     );
     return lines.join('\n');
@@ -129,7 +129,7 @@ export default function LedgerScreen({ db, party, onBack, onEditParty, onEntry, 
     </Pressable>
   );
 
-  const selectedTypeLabel = TYPE_OPTIONS.find((o) => o.value === type).label;
+  const selectedTypeLabel = typeOptions.find((o) => o.value === type).label;
 
   return (
     <View style={{ flex: 1, backgroundColor: c.bg }}>
@@ -192,11 +192,11 @@ export default function LedgerScreen({ db, party, onBack, onEditParty, onEntry, 
             <Text style={{ ...T.money, color: c.text, marginTop: 1 }}>{count}</Text>
           </View>
           <View style={{ flex: 1, alignItems: 'flex-end' }}>
-            <Text style={{ ...T.caption, color: c.muted }}>You gave</Text>
+            <Text style={{ ...T.caption, color: c.muted }}>{entryLabel('gave',party.type)}</Text>
             <Text style={{ ...T.money, color: c.red, marginTop: 1 }}>{money(totalGave)}</Text>
           </View>
           <View style={{ flex: 1, alignItems: 'flex-end' }}>
-            <Text style={{ ...T.caption, color: c.muted }}>You got</Text>
+            <Text style={{ ...T.caption, color: c.muted }}>{entryLabel('got',party.type)}</Text>
             <Text style={{ ...T.money, color: c.green, marginTop: 1 }}>{money(totalGot)}</Text>
           </View>
         </View>
@@ -274,42 +274,70 @@ export default function LedgerScreen({ db, party, onBack, onEditParty, onEntry, 
       />
 
       <View style={[{
-        flexDirection: 'row', gap: space.sm, alignItems: 'center',
-        paddingHorizontal: space.md, paddingVertical: space.md,
+        paddingHorizontal: space.md, paddingTop: space.md, paddingBottom: space.sm,
         backgroundColor: c.surface, borderTopWidth: 1, borderTopColor: c.lineSoft,
       }, elevate(c, 2)]}>
-        <RoundBtn label={'\u2212'} color={c.red} a11y="Add a you gave entry" onPress={() => onEntry('gave')} />
-        <RoundBtn label={'\uFF0B'} color={c.green} a11y="Add a you got entry" onPress={() => onEntry('got')} />
-        <Pressable
-          onPress={doDownload} accessibilityRole="button"
-          style={({ pressed }) => ({
-            flex: 1, height: 46, borderWidth: 1.5, borderColor: c.brand, borderRadius: radius.md,
-            alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: space.xs + 2,
-            opacity: pressed ? 0.8 : 1,
-          })}>
-          <Text style={{ fontSize: 13 }}>{'\uD83D\uDCC4'}</Text>
-          <Text style={{ color: c.brand, fontWeight: '700', fontSize: 14 }}>Statement</Text>
-        </Pressable>
-        {party.phone ? (
+        {/* Primary actions: what this party's two entry types are called. */}
+        <View style={{ flexDirection: 'row', gap: space.sm, marginBottom: space.sm }}>
           <Pressable
-            onPress={() => open('tel:' + party.phone)} accessibilityRole="button" accessibilityLabel="Call"
-            style={({ pressed }) => ({
-              width: 46, height: 46, borderRadius: radius.md, borderWidth: 1.5, borderColor: c.brand,
-              alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.8 : 1,
-            })}>
-            <Text style={{ fontSize: 17 }}>{'\uD83D\uDCDE'}</Text>
+            onPress={() => onEntry('gave')} accessibilityRole="button"
+            accessibilityLabel={`Add ${entryLabel('gave', party.type)} entry`}
+            android_ripple={{ color: 'rgba(255,255,255,.2)' }}
+            style={({ pressed }) => [{
+              flex: 1, height: 48, backgroundColor: c.red, borderRadius: radius.md,
+              alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.88 : 1,
+            }, elevate(c, 1)]}>
+            <Text style={{ color: '#fff', fontWeight: '700', fontSize: 15 }}>
+              {entryLabel('gave', party.type)}
+            </Text>
           </Pressable>
-        ) : null}
-        <Pressable
-          onPress={doShare} accessibilityRole="button"
-          style={({ pressed }) => [{
-            flex: 1, height: 46, backgroundColor: c.brand, borderRadius: radius.md,
-            alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: space.xs + 2,
-            opacity: pressed ? 0.88 : 1,
-          }, elevate(c, 1)]}>
-          <Text style={{ fontSize: 13 }}>{'\uD83D\uDCAC'}</Text>
-          <Text style={{ color: c.brandInk, fontWeight: '700', fontSize: 14 }}>Send</Text>
-        </Pressable>
+          <Pressable
+            onPress={() => onEntry('got')} accessibilityRole="button"
+            accessibilityLabel={`Add ${entryLabel('got', party.type)} entry`}
+            android_ripple={{ color: 'rgba(255,255,255,.2)' }}
+            style={({ pressed }) => [{
+              flex: 1, height: 48, backgroundColor: c.green, borderRadius: radius.md,
+              alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.88 : 1,
+            }, elevate(c, 1)]}>
+            <Text style={{ color: '#fff', fontWeight: '700', fontSize: 15 }}>
+              {entryLabel('got', party.type)}
+            </Text>
+          </Pressable>
+        </View>
+
+        {/* Secondary actions. */}
+        <View style={{ flexDirection: 'row', gap: space.sm, alignItems: 'center' }}>
+          <Pressable
+            onPress={doDownload} accessibilityRole="button"
+            style={({ pressed }) => ({
+              flex: 1, height: 42, borderWidth: 1.5, borderColor: c.brand, borderRadius: radius.md,
+              alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: space.xs + 2,
+              opacity: pressed ? 0.8 : 1,
+            })}>
+            <Text style={{ fontSize: 13 }}>{'\uD83D\uDCC4'}</Text>
+            <Text style={{ color: c.brand, fontWeight: '700', fontSize: 14 }}>Statement</Text>
+          </Pressable>
+          {party.phone ? (
+            <Pressable
+              onPress={() => open('tel:' + party.phone)} accessibilityRole="button" accessibilityLabel="Call"
+              style={({ pressed }) => ({
+                width: 42, height: 42, borderRadius: radius.md, borderWidth: 1.5, borderColor: c.brand,
+                alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.8 : 1,
+              })}>
+              <Text style={{ fontSize: 16 }}>{'\uD83D\uDCDE'}</Text>
+            </Pressable>
+          ) : null}
+          <Pressable
+            onPress={doShare} accessibilityRole="button"
+            style={({ pressed }) => [{
+              flex: 1, height: 42, backgroundColor: c.brand, borderRadius: radius.md,
+              alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: space.xs + 2,
+              opacity: pressed ? 0.88 : 1,
+            }, elevate(c, 1)]}>
+            <Text style={{ fontSize: 13 }}>{'\uD83D\uDCAC'}</Text>
+            <Text style={{ color: c.brandInk, fontWeight: '700', fontSize: 14 }}>Send</Text>
+          </Pressable>
+        </View>
       </View>
       <View style={{ height: insets.bottom, backgroundColor: c.surface }} />
 
@@ -323,7 +351,7 @@ export default function LedgerScreen({ db, party, onBack, onEditParty, onEntry, 
             position: 'absolute', top: insets.top + 104, right: space.md,
             backgroundColor: c.surface, borderRadius: radius.md, overflow: 'hidden', minWidth: 172,
           }, elevate(c, 3)]}>
-            {TYPE_OPTIONS.map((o, i) => (
+            {typeOptions.map((o, i) => (
               <Pressable
                 key={o.value}
                 onPress={() => { setType(o.value); setTypeMenuOpen(false); }}
