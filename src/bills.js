@@ -1,5 +1,6 @@
 import { Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import * as ImageManipulator from 'expo-image-manipulator';
 import * as Sharing from 'expo-sharing';
 import Share from 'react-native-share';
 import { File, Directory, Paths } from 'expo-file-system';
@@ -50,6 +51,35 @@ export async function pickBill(source) {
 export function deleteBill(name) {
   if (!name) return;
   try { new File(billsDir(), name).delete(); } catch (e) {}
+}
+
+// True only if this bill's file is actually present on THIS phone. Bill
+// photos live only on the device that took them — they are not in backups
+// and are not synced — so a restored or second phone can have an entry that
+// references a file it never received.
+export function billExists(name) {
+  if (!name) return false;
+  try { return !!new File(billsDir(), name).exists; } catch (e) { return false; }
+}
+
+// Rotates a bill photo 90° clockwise, in place (same file name, so nothing
+// else in the app — the entry, any pending backup, EXIF-adjacent metadata —
+// needs to change). Returns true on success.
+export async function rotateBill(name) {
+  const uri = billUri(name);
+  if (!uri) return false;
+  try {
+    const result = await ImageManipulator.manipulateAsync(
+      uri, [{ rotate: 90 }], { compress: 0.85, format: ImageManipulator.SaveFormat.JPEG }
+    );
+    const dest = new File(billsDir(), name);
+    try { if (dest.exists) dest.delete(); } catch (e) {}
+    new File(result.uri).copy(dest);
+    return true;
+  } catch (e) {
+    Alert.alert('Could not rotate', 'Something went wrong while rotating this photo. Please try again.');
+    return false;
+  }
 }
 
 // Deletes every file in a bills array. Safe to call with [], null, or undefined.

@@ -5,7 +5,8 @@ import { Sheet, Field, Seg, Btn, ErrorText, Chip, Note, SectionLabel, toast } fr
 import { useTheme, space, radius, type as T, elevate } from '../theme';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { todayStr, daysAgoStr, dateStr, fdate, entryLabel } from '../utils';
-import { billUri, pickBill, deleteBill, sendToWhatsApp } from '../bills';
+import ImageViewing from 'react-native-image-viewing';
+import { billUri, billExists, pickBill, deleteBill, rotateBill, sendToWhatsApp } from '../bills';
 import { pickContact } from '../contacts';
 import { saveBackupFile, loadBackupFile, backupErrorText } from '../backup';
 
@@ -263,68 +264,85 @@ export function BillViewer({ bills, partyName, partyPhone, amountText, onClose }
   const insets = useSafeAreaInsets();
   const list = bills || [];
   const [index, setIndex] = useState(0);
-  const [failed, setFailed] = useState({});
-  const uri = billUri(list[index]);
-  const missing = !uri || !!failed[list[index]];
+  const [bust, setBust] = useState({}); // name -> timestamp, to bust the image cache after a rotate
+  const [rotating, setRotating] = useState(false);
+
+  // Bill photos live only on the phone that took them, so a restored or
+  // second phone can have entries pointing at files it never received.
+  // Those are filtered out here rather than shown as a broken image.
+  const present = list.filter((n) => billExists(n));
+  const missingCount = list.length - present.length;
+  const images = present.map((n) => ({ uri: billUri(n) + (bust[n] ? '?v=' + bust[n] : '') }));
+  const safeIndex = Math.min(index, Math.max(images.length - 1, 0));
+  const currentName = present[safeIndex];
 
   const send = () => sendToWhatsApp({
     phone: partyPhone,
     message: amountText,
-    billNames: partyPhone ? [list[index]] : list,
+    billNames: partyPhone ? [currentName] : present,
     whatsappOnly: true,
   });
 
-  const Arrow = ({ label, onPress }) => (
-    <Pressable onPress={onPress} hitSlop={10} style={{ paddingHorizontal: space.md, paddingVertical: space.xl }}>
-      <Text style={{ color: '#fff', fontSize: 28, opacity: 0.85 }}>{label}</Text>
-    </Pressable>
-  );
+  const doRotate = async () => {
+    if (!currentName || rotating) return;
+    setRotating(true);
+    const ok = await rotateBill(currentName);
+    if (ok) setBust((b) => ({ ...b, [currentName]: Date.now() }));
+    setRotating(false);
+  };
+
+  if (!images.length) {
+    return (
+      <Modal animationType="fade" onRequestClose={onClose} statusBarTranslucent navigationBarTranslucent>
+        <View style={{
+          flex: 1, backgroundColor: '#07090d', alignItems: 'center', justifyContent: 'center',
+          paddingHorizontal: space.xl, paddingTop: insets.top, paddingBottom: insets.bottom,
+        }}>
+          <Text style={{ ...T.body, fontWeight: '700', color: '#fff', textAlign: 'center' }}>
+            Photo not on this phone
+          </Text>
+          <Text style={{ ...T.caption, color: '#b9c2d2', textAlign: 'center', marginTop: space.sm, lineHeight: 18 }}>
+            Bill photos stay on the phone that took them. They are not inside backups and are not synced, so the
+            photo is missing after a restore or on a second phone.
+          </Text>
+          <Btn kind="ghost" label="Close" onPress={onClose} style={{ marginTop: space.lg }} />
+        </View>
+      </Modal>
+    );
+  }
 
   return (
-    <Modal animationType="fade" onRequestClose={onClose} statusBarTranslucent navigationBarTranslucent>
-      <View style={{ flex: 1, backgroundColor: '#07090d', paddingTop: insets.top, paddingBottom: insets.bottom }}>
-        <View style={{ paddingHorizontal: space.lg, paddingVertical: space.md }}>
+    <ImageViewing
+      images={images}
+      imageIndex={safeIndex}
+      visible
+      onRequestClose={onClose}
+      onImageIndexChange={setIndex}
+      backgroundColor="#07090d"
+      HeaderComponent={() => (
+        <View style={{ paddingHorizontal: space.lg, paddingTop: insets.top + space.sm, paddingBottom: space.sm }}>
           <Text numberOfLines={1} style={{ ...T.body, fontWeight: '700', color: '#fff' }}>{partyName}</Text>
           <Text style={{ ...T.caption, color: '#b9c2d2', marginTop: 1 }}>{amountText}</Text>
-          {list.length > 1 ? (
-            <Text style={{ ...T.caption, color: '#7f8ca3', marginTop: 2 }}>Photo {index + 1} of {list.length}</Text>
+          {images.length > 1 || missingCount ? (
+            <Text style={{ ...T.caption, color: '#7f8ca3', marginTop: 2 }}>
+              {images.length > 1 ? `Photo ${safeIndex + 1} of ${images.length}` : ''}
+              {images.length > 1 && missingCount ? '  \u00B7  ' : ''}
+              {missingCount ? `${missingCount} more not on this phone` : ''}
+            </Text>
           ) : null}
+          <Text style={{ ...T.caption, color: '#5e6b80', marginTop: 4 }}>Pinch or double-tap to zoom</Text>
         </View>
-
-        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-          {list.length > 1 ? <Arrow label={'\u2039'} onPress={() => setIndex((i) => (i - 1 + list.length) % list.length)} /> : null}
-          <View style={{ flex: 1, height: '100%', alignItems: 'center', justifyContent: 'center' }}>
-            {missing ? (
-              <View style={{ paddingHorizontal: space.xl }}>
-                <Text style={{ ...T.body, fontWeight: '700', color: '#fff', textAlign: 'center' }}>
-                  Photo not on this phone
-                </Text>
-                <Text style={{ ...T.caption, color: '#b9c2d2', textAlign: 'center', marginTop: space.sm, lineHeight: 18 }}>
-                  Bill photos stay on the phone that took them. They are not inside backups and are not synced, so the
-                  photo is missing after a restore or on a second phone.
-                </Text>
-              </View>
-            ) : (
-              <Image
-                source={{ uri }} resizeMode="contain" style={{ flex: 1, width: '100%' }}
-                onError={() => setFailed((f) => ({ ...f, [list[index]]: true }))}
-              />
-            )}
+      )}
+      FooterComponent={() => (
+        <View style={{ paddingHorizontal: space.lg, paddingTop: space.sm, paddingBottom: space.lg + insets.bottom }}>
+          <View style={{ flexDirection: 'row', gap: space.sm + 2 }}>
+            <Btn kind="ghost" label="Close" onPress={onClose} style={{ flex: 1 }} />
+            <Btn kind="ghost" icon={'\u21BB'} label="Rotate" onPress={doRotate} busy={rotating} style={{ flex: 1 }} />
+            <Btn kind="green" icon={'\uD83D\uDCAC'} label="Send" onPress={send} style={{ flex: 1.2 }} />
           </View>
-          {list.length > 1 ? <Arrow label={'\u203A'} onPress={() => setIndex((i) => (i + 1) % list.length)} /> : null}
         </View>
-
-        <Text style={{ ...T.caption, color: '#8d99ae', textAlign: 'center', paddingHorizontal: space.lg, paddingTop: space.sm }}>
-          {partyPhone
-            ? `Sends straight to ${partyName}'s WhatsApp.`
-            : `Tap Send, then pick ${partyName || 'the contact'} in the share sheet.`}
-        </Text>
-        <View style={{ flexDirection: 'row', gap: space.sm + 2, padding: space.lg }}>
-          <Btn kind="ghost" label="Close" onPress={onClose} style={{ flex: 1 }} />
-          <Btn kind="green" icon={'\uD83D\uDCAC'} label="Send bill" onPress={send} disabled={missing} style={{ flex: 1.3 }} />
-        </View>
-      </View>
-    </Modal>
+      )}
+    />
   );
 }
 
