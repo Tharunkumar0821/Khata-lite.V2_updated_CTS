@@ -6,7 +6,7 @@ import { useTheme, space, radius, type as T, elevate } from '../theme';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { todayStr, daysAgoStr, dateStr, fdate, entryLabel } from '../utils';
 import ImageViewing from 'react-native-image-viewing';
-import { billUri, billExists, pickBill, deleteBill, rotateBill, sendToWhatsApp } from '../bills';
+import { billUri, billExists, pickBill, deleteBill, rotateBill, sendToWhatsApp, collectBillNames, writeAllBillPhotos } from '../bills';
 import { pickContact } from '../contacts';
 import { saveBackupFile, loadBackupFile, backupErrorText } from '../backup';
 
@@ -548,12 +548,15 @@ export function BackupSheet({ db, businessName, onRestore, onClose }) {
   const [err, setErr] = useState('');
   const [showPaste, setShowPaste] = useState(false);
   const [text, setText] = useState('');
+  const [withPhotos, setWithPhotos] = useState(false);
+
+  const photoCount = collectBillNames(db || {}).length;
 
   const doSave = async () => {
     setBusy('save'); setErr('');
-    const res = await saveBackupFile(db, businessName);
+    const res = await saveBackupFile(db, businessName, withPhotos);
     setBusy('');
-    if (res.ok) toast('Backup file created');
+    if (res.ok) toast(withPhotos ? 'Backup file created (with photos)' : 'Backup file created');
     else setErr(backupErrorText(res));
   };
 
@@ -568,7 +571,10 @@ export function BackupSheet({ db, businessName, onRestore, onClose }) {
           text: 'Replace everything',
           style: 'destructive',
           onPress: () => {
-            try { onRestore(data); }
+            try {
+              if (data && data._photos) writeAllBillPhotos(data._photos);
+              onRestore(data);
+            }
             catch (e) { setErr('That backup could not be read. It may be from a different app.'); }
           },
         },
@@ -616,12 +622,23 @@ export function BackupSheet({ db, businessName, onRestore, onClose }) {
         ))}
       </View>
 
+      <Seg
+        value={withPhotos ? 'photos' : 'data'}
+        onChange={(v) => setWithPhotos(v === 'photos')}
+        options={[
+          { value: 'data', label: 'Data only' },
+          { value: 'photos', label: `With photos${photoCount ? ` (${photoCount})` : ''}` },
+        ]}
+      />
+
       <Btn icon={'\u2193'} busy={busy === 'save'} label="Save backup file" onPress={doSave} style={{ marginBottom: space.sm + 2 }} />
       <Btn kind="ghost" icon={'\u2191'} busy={busy === 'load'} label="Restore from file" onPress={doLoad} style={{ marginBottom: space.md }} />
 
       <Note>
-        Saving writes a .json file and opens the share sheet, so you can keep it in Drive, mail it to yourself, or send
-        it on WhatsApp. Bill photos are not inside the file — they stay on this phone.
+        {withPhotos
+          ? `This file will include ${photoCount} bill photo${photoCount === 1 ? '' : 's'} currently on this phone, so it will be noticeably bigger than a data-only backup.`
+          : 'Saving writes a .json file and opens the share sheet, so you can keep it in Drive, mail it to yourself, or send it on WhatsApp.'}
+        {' '}Pick "With photos" to bring bill photos along too, including onto a different phone.
       </Note>
 
       <ErrorText>{err}</ErrorText>

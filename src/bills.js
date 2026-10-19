@@ -4,6 +4,10 @@ import * as ImageManipulator from 'expo-image-manipulator';
 import * as Sharing from 'expo-sharing';
 import Share from 'react-native-share';
 import { File, Directory, Paths } from 'expo-file-system';
+// The legacy API's base64 read/write is already proven working in this
+// project (src/excel.js uses it the same way), so bill-photo backup reuses
+// it rather than guessing at the newer File class's base64 method names.
+import * as FileSystemLegacy from 'expo-file-system/legacy';
 
 // Bill photos are copied into the app's own storage so they survive
 // the camera/cache being cleaned. Entries store only the file NAME.
@@ -85,6 +89,64 @@ export async function rotateBill(name) {
 // Deletes every file in a bills array. Safe to call with [], null, or undefined.
 export function deleteBills(names) {
   (names || []).forEach(deleteBill);
+}
+
+// --- Including bill photos in a backup file -------------------------------
+//
+// A backup is one .json file. Photos go in as base64 text under their own
+// file name, so the same file that holds the data can also hold the images,
+// with no separate zip step. This only covers photos currently on THIS
+// phone — an entry whose photo was never received here (restored from a
+// photo-less backup, or synced from another phone) has nothing to collect.
+
+// Every distinct bill photo file name referenced anywhere in `db` (every
+// business, every entry), with no duplicates.
+export function collectBillNames(db) {
+  const set = new Set();
+  (db && db.txns ? db.txns : []).forEach((t) => (t.bills || []).forEach((n) => { if (n) set.add(n); }));
+  return Array.from(set);
+}
+
+// Reads every bill photo that exists on this phone as base64 text, keyed by
+// file name. Missing photos are simply left out of the result.
+export async function readBillsAsBase64(names) {
+  const out = {};
+  for (const name of names) {
+    if (!billExists(name)) continue;
+    try {
+      out[name] = await FileSystemLegacy.readAsStringAsync(
+        billUri(name), { encoding: FileSystemLegacy.EncodingType.Base64 }
+      );
+    } catch (e) {
+      // Skip this one photo rather than fail the whole backup.
+    }
+  }
+  return out;
+}
+
+// Writes one base64 photo into the bills folder during a restore, unless a
+// file with that name is already there (never overwrite something this
+// phone already has).
+async function writeBillBase64(name, base64) {
+  if (!name || !base64) return;
+  try {
+    const dest = new File(billsDir(), name);
+    if (dest.exists) return;
+    await FileSystemLegacy.writeAsStringAsync(
+      dest.uri, base64, { encoding: FileSystemLegacy.EncodingType.Base64 }
+    );
+  } catch (e) {
+    // Best-effort: the entry's data still restores correctly either way,
+    // just without this one photo.
+  }
+}
+
+// Restores every photo in a { fileName: base64 } map. Fire-and-forget —
+// does not block whatever called it, the same way the sync functions in
+// src/sync.js don't block on their network writes.
+export function writeAllBillPhotos(photos) {
+  if (!photos) return;
+  Object.keys(photos).forEach((name) => { writeBillBase64(name, photos[name]); });
 }
 
 // Opens the Android share sheet with the image. Choose WhatsApp, then the contact.

@@ -1,6 +1,7 @@
 import * as Sharing from 'expo-sharing';
 import * as DocumentPicker from 'expo-document-picker';
 import { File, Paths } from 'expo-file-system';
+import { collectBillNames, readBillsAsBase64 } from './bills';
 
 // Backup and restore as a real .json file, rather than a wall of text the
 // user has to copy out of a box and keep somewhere safe themselves.
@@ -20,16 +21,26 @@ const safe = (s) =>
     .replace(/^-+|-+$/g, '')
     .toLowerCase() || 'khata';
 
-export function backupFileName(businessName) {
-  return `${safe(businessName)}-khata-backup-${stamp()}.json`;
+export function backupFileName(businessName, withPhotos) {
+  return `${safe(businessName)}-khata-backup${withPhotos ? '-with-photos' : ''}-${stamp()}.json`;
 }
 
 // Writes the backup and opens the share sheet.
+// `withPhotos`: also embeds every bill photo currently on this phone as
+// base64 inside the same .json file, under a `_photos` key. This makes the
+// file noticeably bigger (base64 runs about a third larger than the photo
+// itself), so it's opt-in rather than the default.
 // Returns { ok: true, name } or { ok: false, reason }.
-export async function saveBackupFile(db, businessName) {
+export async function saveBackupFile(db, businessName, withPhotos) {
   let file;
   try {
-    file = new File(Paths.cache, backupFileName(businessName));
+    const payload = { ...db };
+    if (withPhotos) {
+      const names = collectBillNames(db);
+      if (names.length) payload._photos = await readBillsAsBase64(names);
+    }
+
+    file = new File(Paths.cache, backupFileName(businessName, withPhotos));
 
     // create() throws if the path already exists, so clear a same-day file
     // from an earlier save in this session first.
@@ -38,7 +49,7 @@ export async function saveBackupFile(db, businessName) {
     } catch (e) {}
 
     file.create();
-    file.write(JSON.stringify(db, null, 2));
+    file.write(JSON.stringify(payload, null, 2));
   } catch (e) {
     return { ok: false, reason: 'write', message: e && e.message ? e.message : String(e) };
   }
