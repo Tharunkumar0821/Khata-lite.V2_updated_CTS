@@ -1,0 +1,527 @@
+--------- beginning of system
+10-18 23:26:56.596 12885 27043 E ActivityThread: Failed to find provider info for com.facebook.stella.assistant.deviceconnectionstate
+10-18 23:26:56.598 12885 27043 E ActivityThread: Failed to find provider info for com.facebook.stella_debug.assistant.deviceconnectionstate
+--------- beginning of main
+10-18 23:26:58.619 27046 27046 E book.appmanager: BBinder_init Processname  com.facebook.appmanager  
+10-18 23:26:58.619 27046 27046 E book.appmanager: BBinder_init hasGetProcessName  com.facebook.appmanager
+10-18 23:26:58.633 27050 27050 E agram.barcelona: BBinder_init Processname  com.instagram.barcelona  
+10-18 23:26:58.633 27050 27050 E agram.barcelona: BBinder_init hasGetProcessName  com.instagram.barcelona
+10-18 23:26:58.651 27061 27061 E com.jio.myjio: BBinder_init Processname  com.jio.myjio  
+10-18 23:26:58.651 27061 27061 E com.jio.myjio: BBinder_init hasGetProcessName  com.jio.myjio
+10-18 23:26:58.773 27046 27106 E SoLoader: Checking /data/app missing libraries.
+10-18 23:26:58.773 27046 27106 E SoLoader: Successfully recovered from /data/app disk failure.
+10-18 23:26:58.774 27046 27106 E SoLoader: Checking /data/data missing libraries.
+10-18 23:26:58.774 27046 27106 E SoLoader: No libraries missing from unpacking so paths while recovering /data/data failure
+10-18 23:26:58.956 27050 27158 E HeliumCrashReporter: Pending crash path /data/data/com.instagram.barcelona/cache/webview_embedded/Helium Crashpad/pending/ is not a directory
+10-18 23:26:58.989 27164 27164 E facebook.system: BBinder_init Processname  com.facebook.system  
+10-18 23:26:58.989 27164 27164 E facebook.system: BBinder_init hasGetProcessName  com.facebook.system
+10-18 23:26:59.035 27050 27050 E QPLProvider: QuickPerformanceLogger instance wasn't installed in provider, returning noop. Please call QuickPerformanceLoggerProvider.setQuickPerformanceLogger() before getting the instance.
+10-18 23:26:59.035 27050 27050 E QPLProvider: java.lang.IllegalStateException: No QPL instance provided
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at com.facebook.quicklog.QuickPerformanceLoggerProvider.getQPLInstance(:35)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at X.01to.<init>(:12)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at X.013Z.apply(Unknown Source:111)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1713)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at X.01tl.A00(:65)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at X.01th.<init>(:9)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at X.06LA.A06(Unknown Source:79)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at X.06LA.invoke(Unknown Source:7)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at X.01sn.A00(:15)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at com.instagram.barcelona.process.main.BarcelonaApplicationForMainProcess.A05(:2279)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at com.instagram.barcelona.app.BarcelonaAppShell.onCreate(Unknown Source:703)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1395)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:9063)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at android.app.ActivityThread.-$$Nest$mhandleBindApplication(Unknown Source:0)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:3086)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at android.os.Handler.dispatchMessage(Handler.java:114)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at android.os.Looper.loopOnce(Looper.java:266)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at android.os.Looper.loop(Looper.java:361)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at android.app.ActivityThread.main(ActivityThread.java:10406)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at java.lang.reflect.Method.invoke(Native Method)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:675)
+10-18 23:26:59.035 27050 27050 E QPLProvider: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1002)
+10-18 23:26:59.039 27050 27050 E HiddenApis2: Failed to init DecodeJObjectFuncPtr
+10-18 23:26:59.107 27046 27161 E ActivityThread: Failed to find provider info for com.facebook.appmanager.nekodirect
+10-18 23:26:59.118 27050 27209 E QPLProvider: QuickPerformanceLogger instance wasn't installed in provider, returning noop. Please call QuickPerformanceLoggerProvider.setQuickPerformanceLogger() before getting the instance.
+10-18 23:26:59.118 27050 27209 E QPLProvider: java.lang.IllegalStateException: No QPL instance provided
+10-18 23:26:59.118 27050 27209 E QPLProvider: 	at com.facebook.quicklog.QuickPerformanceLoggerProvider.getQPLInstance(:35)
+10-18 23:26:59.118 27050 27209 E QPLProvider: 	at com.facebook.quicklog.QuickPerformanceLoggerNativeProvider.getQPLInstance(:0)
+10-18 23:26:59.118 27050 27209 E QPLProvider: 	at com.facebook.common.jniexecutors.NativeRunnable.nativeRun(Native Method)
+10-18 23:26:59.118 27050 27209 E QPLProvider: 	at com.facebook.common.jniexecutors.NativeRunnable.runNativeDirectly(:0)
+10-18 23:26:59.118 27050 27209 E QPLProvider: 	at com.facebook.common.jniexecutors.PooledNativeRunnable.run(:0)
+10-18 23:26:59.118 27050 27209 E QPLProvider: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-18 23:26:59.118 27050 27209 E QPLProvider: 	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+10-18 23:26:59.118 27050 27209 E QPLProvider: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:348)
+10-18 23:26:59.118 27050 27209 E QPLProvider: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+10-18 23:26:59.118 27050 27209 E QPLProvider: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+10-18 23:26:59.118 27050 27209 E QPLProvider: 	at java.lang.Thread.run(Thread.java:1564)
+10-18 23:26:59.121 27050 27050 E MQD     : Failed to resolve method MessageQueue.isIdling: java.lang.NoSuchMethodException: android.os.MessageQueue.isIdling []
+10-18 23:26:59.157 27050 27050 E agram.barcelona: No implementation found for void com.facebook.quicklog.QuickPerformanceLoggerNativeProvider.nativeUpdateQPLInstance() (tried Java_com_facebook_quicklog_QuickPerformanceLoggerNativeProvider_nativeUpdateQPLInstance and Java_com_facebook_quicklog_QuickPerformanceLoggerNativeProvider_nativeUpdateQPLInstance__) - is the library loaded, e.g. System.loadLibrary?
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: NoSuchMethodException
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: java.lang.NoSuchMethodException: com.instagram.analytics.analytics2.IGAnalytics2HandlerThreadFactory.<init> [class android.content.Context]
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at java.lang.Class.getConstructor0(Class.java:3379)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at java.lang.Class.getConstructor(Class.java:2471)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at X.05AN.A03(:31)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at X.05AN.A02(:5)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at X.05AN.A04(:2)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at X.05AM.<init>(:46)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at X.05AF.<init>(:208414)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at X.04vv.A00(:1658)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at X.01uq.A01(:67)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at X.01uq.A00(:495)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at X.01uq.A04(:102)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at X.01sq.A02(:28)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at com.instagram.barcelona.process.main.BarcelonaApplicationForMainProcess.A05(:2365)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at com.instagram.barcelona.app.BarcelonaAppShell.onCreate(Unknown Source:703)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1395)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:9063)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at android.app.ActivityThread.-$$Nest$mhandleBindApplication(Unknown Source:0)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:3086)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at android.os.Handler.dispatchMessage(Handler.java:114)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at android.os.Looper.loopOnce(Looper.java:266)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at android.os.Looper.loop(Looper.java:361)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at android.app.ActivityThread.main(ActivityThread.java:10406)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at java.lang.reflect.Method.invoke(Native Method)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:675)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1002)
+10-18 23:26:59.251 27050 27050 E ContextConstructorHelper: Unable to create instance for HandlerThreadFactory
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: NoSuchMethodException
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: java.lang.NoSuchMethodException: com.instagram.analytics.analytics2.IGAnalytics2HandlerThreadFactory.<init> [class android.content.Context]
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at java.lang.Class.getConstructor0(Class.java:3379)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at java.lang.Class.getConstructor(Class.java:2471)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.05AN.A03(:31)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.05AN.A02(:5)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.05AN.A04(:2)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.05AM.<init>(:46)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.05AF.<init>(:208414)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.04vv.A00(:1658)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.03za.<init>(:268435456)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.06eS.invoke(Unknown Source:1588)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.007E.invoke(Unknown Source:94)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.0245.getValue(Unknown Source:25)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.03zA.A00(:51)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.05nt.<clinit>(:9)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.011S.A02(Unknown Source:567)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.0ABn.A00(:43)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.01jd.A02(:69)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.01jf.get(:4)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.02sy.next(:46)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.05nh.A00(:22)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.05nh.A04(:0)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.01sx.A04(:85)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at X.01sq.A02(:28)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at com.instagram.barcelona.process.main.BarcelonaApplicationForMainProcess.A05(:2365)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at com.instagram.barcelona.app.BarcelonaAppShell.onCreate(Unknown Source:703)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1395)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:9063)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at android.app.ActivityThread.-$$Nest$mhandleBindApplication(Unknown Source:0)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:3086)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at android.os.Handler.dispatchMessage(Handler.java:114)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at android.os.Looper.loopOnce(Looper.java:266)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at android.os.Looper.loop(Looper.java:361)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at android.app.ActivityThread.main(ActivityThread.java:10406)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at java.lang.reflect.Method.invoke(Native Method)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:675)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1002)
+10-18 23:26:59.282 27050 27050 E ContextConstructorHelper: Unable to create instance for HandlerThreadFactory
+10-18 23:26:59.342 27061 27275 E com.jio.myjio: No package ID 6b found for resource ID 0x6b0b0013.
+10-18 23:26:59.360 27050 27181 E PendingMediaStoreSerializer: deserialize start
+10-18 23:26:59.360 27050 27181 E PendingMediaStoreSerializer: start reading pending media
+10-18 23:26:59.360 27050 27181 E PendingMediaStoreSerializer: Set the submedia on albums
+10-18 23:26:59.362 27050 27181 E PendingMediaStoreSerializer: Set the submedia on chain owners
+10-18 23:26:59.362 27050 27181 E PendingMediaStoreSerializer: Set the submedia on story templates
+10-18 23:26:59.362 27050 27181 E PendingMediaStoreSerializer: Set the submedia on Basel templates
+10-18 23:26:59.362 27050 27181 E PendingMediaStoreSerializer: deserialize is done. start calling callbacks
+10-18 23:26:59.362 27050 27181 E PendingMediaStoreSerializer: deserialize end
+10-18 23:26:59.457 27050 27050 E PendingMediaStoreSerializer: wait for deserialization lock
+10-18 23:26:59.457 27050 27050 E PendingMediaStoreSerializer: calling callbacks
+10-18 23:26:59.575 27050 27292 E msys    : E[N mns:DGWClient]onResolverSuccess(367)=>Cache refresh succeeded with system DNS resolver. IP count: 2
+10-18 23:26:59.646 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=2
+10-18 23:26:59.646 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=2
+10-18 23:26:59.685 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:26:59.691 27050 27383 E EmergencyPushPeriodicFetchWorker: Skipping fetch since app is backgrounded
+10-18 23:26:59.763 27050 27292 E msys    : E[N mns:DGWClient]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:26:59.764 27050 27292 E msys    : E[N mns:DGWClient]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:26:59.769 27050 27292 E msys    : E[N mns:DGWClient]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=3, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:26:59.822 27050 27292 E msys    : E[N mns:DGWClient]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:26:59.996 27415 27415 E inkedin.android: BBinder_init Processname  com.linkedin.android  
+10-18 23:26:59.996 27415 27415 E inkedin.android: BBinder_init hasGetProcessName  com.linkedin.android
+10-18 23:27:00.047 27050 27292 E msys    : E[N mns:DGWClient]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:00.099 27432 27432 E twitter.android: BBinder_init Processname  com.twitter.android  
+10-18 23:27:00.099 27432 27432 E twitter.android: BBinder_init hasGetProcessName  com.twitter.android
+10-18 23:27:00.187 27050 27292 E msys    : E[N mns:DGWClient]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=2
+10-18 23:27:00.218 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:00.372 27050 27292 E msys    : E[N mns:DGWClient]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=2
+10-18 23:27:00.486 27415 27415 E FlagshipApplication: [main] FlagshipApplication#onCreate() called for process id 27415
+10-18 23:27:00.567 27432 27521 E twitter.android: No package ID 6b found for resource ID 0x6b0b0013.
+10-18 23:27:00.603 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:00.631 27050 27224 E msys    : E[N mns:TigonMNS]onResolverSuccess(367)=>Cache refresh succeeded with system DNS resolver. IP count: 2
+10-18 23:27:00.631 27050 27224 E msys    : E[N mns:TigonMNS]onResolverSuccess(367)=>Cache refresh succeeded with system DNS resolver. IP count: 2
+10-18 23:27:00.632 27050 27224 E msys    : E[N mns:TigonMNS]onResolverSuccess(367)=>Cache refresh succeeded with system DNS resolver. IP count: 2
+10-18 23:27:00.641 27050 27224 E msys    : E[N mns:TigonMNS]onResolverSuccess(367)=>Cache refresh succeeded with system DNS resolver. IP count: 2
+10-18 23:27:00.692 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=0
+10-18 23:27:00.693 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=0
+10-18 23:27:00.693 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=3, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=0
+10-18 23:27:00.699 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=0
+10-18 23:27:00.699 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=0
+10-18 23:27:00.700 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=3, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=0
+10-18 23:27:00.745 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (runtime_flags=CorePlatformApi, domain=core-platform, api=max-target-q,core-platform-api) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.745 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setAlpnProtocols([B)V (runtime_flags=0, domain=core-platform, api=max-target-q) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.746 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (runtime_flags=CorePlatformApi, domain=core-platform, api=max-target-q,core-platform-api) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.746 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setAlpnProtocols([B)V (runtime_flags=0, domain=core-platform, api=max-target-q) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.746 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (runtime_flags=CorePlatformApi, domain=core-platform, api=max-target-q,core-platform-api) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.747 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setAlpnProtocols([B)V (runtime_flags=0, domain=core-platform, api=max-target-q) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.747 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (runtime_flags=CorePlatformApi, domain=core-platform, api=max-target-q,core-platform-api) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.747 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setAlpnProtocols([B)V (runtime_flags=0, domain=core-platform, api=max-target-q) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.747 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (runtime_flags=CorePlatformApi, domain=core-platform, api=max-target-q,core-platform-api) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.747 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setAlpnProtocols([B)V (runtime_flags=0, domain=core-platform, api=max-target-q) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.748 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (runtime_flags=CorePlatformApi, domain=core-platform, api=max-target-q,core-platform-api) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.748 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setAlpnProtocols([B)V (runtime_flags=0, domain=core-platform, api=max-target-q) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.748 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (runtime_flags=CorePlatformApi, domain=core-platform, api=max-target-q,core-platform-api) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.748 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setAlpnProtocols([B)V (runtime_flags=0, domain=core-platform, api=max-target-q) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.748 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (runtime_flags=CorePlatformApi, domain=core-platform, api=max-target-q,core-platform-api) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.748 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setAlpnProtocols([B)V (runtime_flags=0, domain=core-platform, api=max-target-q) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.749 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (runtime_flags=CorePlatformApi, domain=core-platform, api=max-target-q,core-platform-api) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.749 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setAlpnProtocols([B)V (runtime_flags=0, domain=core-platform, api=max-target-q) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.749 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (runtime_flags=CorePlatformApi, domain=core-platform, api=max-target-q,core-platform-api) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.749 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setAlpnProtocols([B)V (runtime_flags=0, domain=core-platform, api=max-target-q) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.749 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (runtime_flags=CorePlatformApi, domain=core-platform, api=max-target-q,core-platform-api) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.749 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setAlpnProtocols([B)V (runtime_flags=0, domain=core-platform, api=max-target-q) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.749 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (runtime_flags=CorePlatformApi, domain=core-platform, api=max-target-q,core-platform-api) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.749 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setAlpnProtocols([B)V (runtime_flags=0, domain=core-platform, api=max-target-q) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.750 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (runtime_flags=CorePlatformApi, domain=core-platform, api=max-target-q,core-platform-api) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.750 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setAlpnProtocols([B)V (runtime_flags=0, domain=core-platform, api=max-target-q) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.750 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (runtime_flags=CorePlatformApi, domain=core-platform, api=max-target-q,core-platform-api) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:00.750 27432 27432 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setAlpnProtocols([B)V (runtime_flags=0, domain=core-platform, api=max-target-q) from Lcom/x/android/io/impl/f; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:01.072 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:01.403 27432 27515 E SQLiteLog: (284) automatic index on dm_latest_notifiable_reaction(conv_id)
+10-18 23:27:01.403 27432 27515 E SQLiteLog: (284) automatic index on dm_latest_notifiable_reaction(conv_id)
+10-18 23:27:01.536 27432 27640 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/ConscryptEngineSocket;->setUseSessionTickets(Z)V (runtime_flags=CorePlatformApi, domain=core-platform, api=max-target-q,core-platform-api) from Lcom/google/mlkit/common/sdkinternal/model/a; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:01.537 27432 27640 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setUseSessionTickets(Z)V (runtime_flags=CorePlatformApi, domain=core-platform, api=max-target-q,core-platform-api) from Lcom/google/mlkit/common/sdkinternal/model/a; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:01.538 27432 27640 E twitter.android: hiddenapi: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setUseSessionTickets(Z)V (runtime_flags=0, domain=core-platform, api=max-target-q) from Lcom/google/mlkit/common/sdkinternal/model/a; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-18 23:27:02.692 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:02.693 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:02.928 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=3
+10-18 23:27:02.931 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=3
+10-18 23:27:02.931 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=3
+10-18 23:27:02.946 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:02.948 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:02.957 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=3
+10-18 23:27:03.010 27050 27201 E IdleQueuePayloadBasedServiceLayer: Request empty, but still some servings left: 1355955
+10-18 23:27:03.042 27050 27201 E IdleQueuePayloadBasedServiceLayer: Request empty, but still some servings left: -41209
+10-18 23:27:03.373 27050 27199 E IdleQueuePayloadBasedServiceLayer: Request empty, but still some servings left: -1314746
+10-18 23:27:03.409 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:03.410 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:05.610 16641 17062 E MQTTBypassDGWStreamGroupCallbacks.cpp: onStreamGroupError TransientError domain: MNSQUICConnection code: 1 detail: Local error: 0x40000015: 35 seconds timeout
+10-18 23:27:05.619 16641 16641 E SlowAppComponent: 0ms: KeepWarmReceiver instantiating…
+10-18 23:27:05.621 16641 16641 E SlowAppComponent: 120ms: KeepWarmReceiver instantiating…
+10-18 23:27:05.621 16641 16641 E SlowAppComponent: 132ms: KeepWarmReceiver instantiating…
+10-18 23:27:05.621 16641 16641 E SlowAppComponent: Main thread was blocked for 134ms in the background starting with KeepWarmReceiver
+10-18 23:27:05.673 16641 16641 E SlowAppComponent: 0ms: CrossSigningService instantiating…
+10-18 23:27:05.673 16641 16641 E SlowAppComponent: Main thread was blocked for 33ms in the background starting with CrossSigningService
+10-18 23:27:05.675 16641 17123 E msys    : E[N mns:DGWClient]_OnResolverSuccess(422)=>Cache refresh succeeded with system DNS resolver. IP count: 2
+10-18 23:27:05.678 16641 17235 E msys    : E[O MSync]ModularSyncService_rust_impl::service_ffi::handle_network_response(508)=>DB[223] - Encountered a network error (2002: TransientError domain: MNSQUICConnection code: 1 detail: Local error: 0x40000015: 35 seconds timeout)
+10-18 23:27:05.681 16641 17235 E msys    : E[O MSync]ModularSyncService_rust_impl::service_ffi::handle_network_error_response(671)=>DB[223] - handle network error response
+10-18 23:27:05.732 16641 17375 E msys    : E[N MQTT]readErr(151)=>TCPStreamTransport readErr
+10-18 23:27:05.733 16641 17375 E msys    : E[N MQTT]onReadError(657)=>Read Error: AsyncSocketException: recv() failed (peer=[2a03:2880:f369:90:face:b00c:0:8e]:443), type = Internal error, errno = 103 (Software caused connection abort)
+10-18 23:27:05.734 16641 17123 E msys    : E[N mns:DGWClient]findTransactionByStreamID(241)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=2
+10-18 23:27:05.737 16641 17123 E msys    : E[N mns:DGWClient]findTransactionByStreamID(241)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=2
+10-18 23:27:05.738 16641 17123 E msys    : E[N mns:DGWClient]findTransactionByStreamID(241)=>findTransactionByStreamID null for streamID=3, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=2
+10-18 23:27:05.798 16641 17123 E msys    : E[N mns:DGWClient]findTransactionByStreamID(241)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=3
+10-18 23:27:05.804 16641 17123 E msys    : E[N mns:DGWClient]findTransactionByStreamID(241)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=3
+10-18 23:27:05.893 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:05.975 16641 17123 E msys    : E[N mns:DGWClient]findTransactionByStreamID(241)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=3
+10-18 23:27:05.993 16641 17123 E msys    : E[N mns:DGWClient]findTransactionByStreamID(241)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=3
+10-18 23:27:06.033 16641 17123 E msys    : E[N mns:DGWClient]findTransactionByStreamID(241)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=3
+10-18 23:27:06.197 27050 27224 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:06.740 16641 17123 E msys    : E[N mns:DGWClient]findTransactionByStreamID(241)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=4
+10-18 23:27:06.965 16641 17123 E msys    : E[N mns:DGWClient]findTransactionByStreamID(241)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=4
+10-18 23:27:09.046 27891 27891 E bagam.khatalite: BBinder_init Processname  com.shebagam.khatalite  
+10-18 23:27:09.046 27891 27891 E bagam.khatalite: BBinder_init hasGetProcessName  com.shebagam.khatalite
+10-18 23:27:09.901 27891 27987 E Gralloc5: Failed to load mapper.mediatek.so
+10-18 23:27:09.943 27891 27891 E bagam.khatalite: [perfctl] 27891 27891 FPSGO ver:7
+10-18 23:27:09.943 27891 27891 E bagam.khatalite: [perfctl] 1 1 1 0
+10-18 23:27:10.284 27891 27946 E MEMCWrapper: MEMC_POST_PROCESSING_ENABLE_PROPERTY false.
+10-18 23:27:10.479 28017 28017 E .apps.wellbeing: BBinder_init Processname  com.google.android.apps.wellbeing  
+10-18 23:27:10.480 28017 28017 E .apps.wellbeing: BBinder_init hasGetProcessName  com.google.android.apps.wellbeing
+--------- beginning of crash
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: FATAL EXCEPTION: pool-4-thread-1
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: Process: com.shebagam.khatalite, PID: 27891
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: java.lang.NoClassDefFoundError: Failed resolution of: Lexpo/modules/kotlin/types/AnyTypeProvider;
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at expo.modules.imagemanipulator.ImageManipulatorModule.definition(ImageManipulatorModule.kt:164)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at expo.modules.kotlin.ModuleHolder.<init>(ModuleHolder.kt:22)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at expo.modules.kotlin.ModuleRegistry.register(ModuleRegistry.kt:29)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at expo.modules.kotlin.ModuleRegistry.register(ModuleRegistry.kt:45)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at expo.modules.kotlin.AppContext.<init>(AppContext.kt:131)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at expo.modules.kotlin.KotlinInteropModuleRegistry.<init>(KotlinInteropModuleRegistry.kt:18)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at expo.modules.adapters.react.NativeModulesProxy.<init>(NativeModulesProxy.java:45)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at expo.modules.adapters.react.ModuleRegistryAdapter.getOrCreateNativeModulesProxy(ModuleRegistryAdapter.java:140)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at expo.modules.adapters.react.ModuleRegistryAdapter.createNativeModules(ModuleRegistryAdapter.java:65)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at expo.modules.ExpoModulesPackage.createNativeModules(ExpoModulesPackage.kt:35)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.ReactPackageTurboModuleManagerDelegate.initialize(ReactPackageTurboModuleManagerDelegate.kt:64)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.ReactPackageTurboModuleManagerDelegate.<init>(ReactPackageTurboModuleManagerDelegate.kt:42)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.defaults.DefaultTurboModuleManagerDelegate.<init>(DefaultTurboModuleManagerDelegate.kt:35)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.defaults.DefaultTurboModuleManagerDelegate.<init>(Unknown Source:0)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.defaults.DefaultTurboModuleManagerDelegate$Builder.build(DefaultTurboModuleManagerDelegate.kt:63)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.defaults.DefaultTurboModuleManagerDelegate$Builder.build(DefaultTurboModuleManagerDelegate.kt:43)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.ReactPackageTurboModuleManagerDelegate$Builder.build(ReactPackageTurboModuleManagerDelegate.kt:222)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.ReactInstance.<init>(ReactInstance.kt:183)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.ReactHostImpl.getOrCreateReactInstanceTask$lambda$45$lambda$41(ReactHostImpl.kt:1052)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.ReactHostImpl.$r8$lambda$SmdYI7igN6ETqUXjl3FigYM4DHc(Unknown Source:0)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.ReactHostImpl$$ExternalSyntheticLambda43.then(D8$$SyntheticClass:0)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$Companion.completeImmediately$lambda$3(Task.kt:360)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$Companion.$r8$lambda$b7MTC0ufkn_2TjF4BGcNqGR9qK0(Unknown Source:0)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$Companion$$ExternalSyntheticLambda3.run(D8$$SyntheticClass:0)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Executors$ImmediateExecutor.execute(Executors.kt:41)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$Companion.completeImmediately(Task.kt:358)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$Companion.access$completeImmediately(Task.kt:254)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task.continueWith(Task.kt:133)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task.continueWith$default(Task.kt:117)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task.onSuccess$lambda$12(Task.kt:176)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task.$r8$lambda$l0wwo5AvbHxlwfI1R7CH_codxoo(Unknown Source:0)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$$ExternalSyntheticLambda2.then(D8$$SyntheticClass:0)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$Companion.completeAfterTask$lambda$5(Task.kt:394)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$Companion.$r8$lambda$IPpysnehFwANEiW061YzapkMdoE(Unknown Source:0)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$Companion$$ExternalSyntheticLambda4.run(D8$$SyntheticClass:0)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	at java.lang.Thread.run(Thread.java:1564)
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: Caused by: java.lang.ClassNotFoundException: expo.modules.kotlin.types.AnyTypeProvider
+10-18 23:27:10.523 27891 27973 E AndroidRuntime: 	... 38 more
+10-18 23:27:11.852  2623  2663 E AbstractLogEventBuilder: The provided ProductIdOrigin 3 is not one of the process-level expected values: 1 or 2
+10-18 23:27:11.969  2623 28084 E AbstractLogEventBuilder: The provided ProductIdOrigin 3 is not one of the process-level expected values: 1 or 2
+10-18 23:27:12.048 28155 28155 E android.vending: BBinder_init Processname  com.android.vending  
+10-18 23:27:12.048 28155 28155 E android.vending: BBinder_init hasGetProcessName  com.android.vending
+10-18 23:27:14.477  2623  2666 E Finsky  : [473] Gil log event does not have a valid logging context key.
+10-18 23:27:16.368 28354 28354 E cebook.services: BBinder_init Processname  com.facebook.services  
+10-18 23:27:16.368 28354 28354 E cebook.services: BBinder_init hasGetProcessName  com.facebook.services
+10-18 23:27:16.658 28354 28381 E SoLoader: Checking /data/app missing libraries.
+10-18 23:27:16.658 28354 28381 E SoLoader: Successfully recovered from /data/app disk failure.
+10-18 23:27:16.659 28354 28381 E SoLoader: Checking /data/data missing libraries.
+10-18 23:27:16.659 28354 28381 E SoLoader: No libraries missing from unpacking so paths while recovering /data/data failure
+10-18 23:27:16.781 28409 28409 E book.appmanager: BBinder_init Processname  com.facebook.appmanager  
+10-18 23:27:16.781 28409 28409 E book.appmanager: BBinder_init hasGetProcessName  com.facebook.appmanager
+10-18 23:27:16.957 28409 28433 E SoLoader: Checking /data/app missing libraries.
+10-18 23:27:16.957 28409 28433 E SoLoader: Successfully recovered from /data/app disk failure.
+10-18 23:27:16.958 28409 28433 E SoLoader: Checking /data/data missing libraries.
+10-18 23:27:16.958 28409 28433 E SoLoader: No libraries missing from unpacking so paths while recovering /data/data failure
+10-18 23:27:17.060 28463 28463 E agram.barcelona: BBinder_init Processname  com.instagram.barcelona  
+10-18 23:27:17.060 28463 28463 E agram.barcelona: BBinder_init hasGetProcessName  com.instagram.barcelona
+10-18 23:27:17.147 28488 28488 E facebook.system: BBinder_init Processname  com.facebook.system  
+10-18 23:27:17.147 28488 28488 E facebook.system: BBinder_init hasGetProcessName  com.facebook.system
+10-18 23:27:17.224 28409 28486 E ActivityThread: Failed to find provider info for com.facebook.appmanager.nekodirect
+10-18 23:27:17.287 28463 28521 E HeliumCrashReporter: Pending crash path /data/data/com.instagram.barcelona/cache/webview_embedded/Helium Crashpad/pending/ is not a directory
+10-18 23:27:17.343 28463 28463 E QPLProvider: QuickPerformanceLogger instance wasn't installed in provider, returning noop. Please call QuickPerformanceLoggerProvider.setQuickPerformanceLogger() before getting the instance.
+10-18 23:27:17.343 28463 28463 E QPLProvider: java.lang.IllegalStateException: No QPL instance provided
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at com.facebook.quicklog.QuickPerformanceLoggerProvider.getQPLInstance(:35)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at X.01to.<init>(:12)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at X.013Z.apply(Unknown Source:111)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1713)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at X.01tl.A00(:65)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at X.01th.<init>(:9)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at X.06LA.A06(Unknown Source:79)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at X.06LA.invoke(Unknown Source:7)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at X.01sn.A00(:15)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at com.instagram.barcelona.process.main.BarcelonaApplicationForMainProcess.A05(:2279)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at com.instagram.barcelona.app.BarcelonaAppShell.onCreate(Unknown Source:703)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1395)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:9063)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at android.app.ActivityThread.-$$Nest$mhandleBindApplication(Unknown Source:0)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:3086)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at android.os.Handler.dispatchMessage(Handler.java:114)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at android.os.Looper.loopOnce(Looper.java:266)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at android.os.Looper.loop(Looper.java:361)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at android.app.ActivityThread.main(ActivityThread.java:10406)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at java.lang.reflect.Method.invoke(Native Method)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:675)
+10-18 23:27:17.343 28463 28463 E QPLProvider: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1002)
+10-18 23:27:17.346 28463 28463 E HiddenApis2: Failed to init DecodeJObjectFuncPtr
+10-18 23:27:17.419 28463 28463 E MQD     : Failed to resolve method MessageQueue.isIdling: java.lang.NoSuchMethodException: android.os.MessageQueue.isIdling []
+10-18 23:27:17.431 28463 28599 E QPLProvider: QuickPerformanceLogger instance wasn't installed in provider, returning noop. Please call QuickPerformanceLoggerProvider.setQuickPerformanceLogger() before getting the instance.
+10-18 23:27:17.431 28463 28599 E QPLProvider: java.lang.IllegalStateException: No QPL instance provided
+10-18 23:27:17.431 28463 28599 E QPLProvider: 	at com.facebook.quicklog.QuickPerformanceLoggerProvider.getQPLInstance(:35)
+10-18 23:27:17.431 28463 28599 E QPLProvider: 	at com.facebook.quicklog.QuickPerformanceLoggerNativeProvider.getQPLInstance(:0)
+10-18 23:27:17.431 28463 28599 E QPLProvider: 	at com.facebook.common.jniexecutors.NativeRunnable.nativeRun(Native Method)
+10-18 23:27:17.431 28463 28599 E QPLProvider: 	at com.facebook.common.jniexecutors.NativeRunnable.runNativeDirectly(:0)
+10-18 23:27:17.431 28463 28599 E QPLProvider: 	at com.facebook.common.jniexecutors.PooledNativeRunnable.run(:0)
+10-18 23:27:17.431 28463 28599 E QPLProvider: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-18 23:27:17.431 28463 28599 E QPLProvider: 	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+10-18 23:27:17.431 28463 28599 E QPLProvider: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:348)
+10-18 23:27:17.431 28463 28599 E QPLProvider: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+10-18 23:27:17.431 28463 28599 E QPLProvider: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+10-18 23:27:17.431 28463 28599 E QPLProvider: 	at java.lang.Thread.run(Thread.java:1564)
+10-18 23:27:17.448 28463 28463 E agram.barcelona: No implementation found for void com.facebook.quicklog.QuickPerformanceLoggerNativeProvider.nativeUpdateQPLInstance() (tried Java_com_facebook_quicklog_QuickPerformanceLoggerNativeProvider_nativeUpdateQPLInstance and Java_com_facebook_quicklog_QuickPerformanceLoggerNativeProvider_nativeUpdateQPLInstance__) - is the library loaded, e.g. System.loadLibrary?
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: NoSuchMethodException
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: java.lang.NoSuchMethodException: com.instagram.analytics.analytics2.IGAnalytics2HandlerThreadFactory.<init> [class android.content.Context]
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at java.lang.Class.getConstructor0(Class.java:3379)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at java.lang.Class.getConstructor(Class.java:2471)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at X.05AN.A03(:31)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at X.05AN.A02(:5)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at X.05AN.A04(:2)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at X.05AM.<init>(:46)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at X.05AF.<init>(:208414)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at X.04vv.A00(:1658)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at X.01uq.A01(:67)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at X.01uq.A00(:495)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at X.01uq.A04(:102)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at X.01sq.A02(:28)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at com.instagram.barcelona.process.main.BarcelonaApplicationForMainProcess.A05(:2365)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at com.instagram.barcelona.app.BarcelonaAppShell.onCreate(Unknown Source:703)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1395)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:9063)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at android.app.ActivityThread.-$$Nest$mhandleBindApplication(Unknown Source:0)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:3086)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at android.os.Handler.dispatchMessage(Handler.java:114)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at android.os.Looper.loopOnce(Looper.java:266)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at android.os.Looper.loop(Looper.java:361)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at android.app.ActivityThread.main(ActivityThread.java:10406)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at java.lang.reflect.Method.invoke(Native Method)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:675)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1002)
+10-18 23:27:17.548 28463 28463 E ContextConstructorHelper: Unable to create instance for HandlerThreadFactory
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: NoSuchMethodException
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: java.lang.NoSuchMethodException: com.instagram.analytics.analytics2.IGAnalytics2HandlerThreadFactory.<init> [class android.content.Context]
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at java.lang.Class.getConstructor0(Class.java:3379)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at java.lang.Class.getConstructor(Class.java:2471)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.05AN.A03(:31)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.05AN.A02(:5)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.05AN.A04(:2)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.05AM.<init>(:46)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.05AF.<init>(:208414)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.04vv.A00(:1658)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.03za.<init>(:268435456)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.06eS.invoke(Unknown Source:1588)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.007E.invoke(Unknown Source:94)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.0245.getValue(Unknown Source:25)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.03zA.A00(:51)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.05nt.<clinit>(:9)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.011S.A02(Unknown Source:567)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.0ABn.A00(:43)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.01jd.A02(:69)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.01jf.get(:4)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.02sy.next(:46)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.05nh.A00(:22)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.05nh.A04(:0)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.01sx.A04(:85)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at X.01sq.A02(:28)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at com.instagram.barcelona.process.main.BarcelonaApplicationForMainProcess.A05(:2365)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at com.instagram.barcelona.app.BarcelonaAppShell.onCreate(Unknown Source:703)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1395)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:9063)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at android.app.ActivityThread.-$$Nest$mhandleBindApplication(Unknown Source:0)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:3086)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at android.os.Handler.dispatchMessage(Handler.java:114)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at android.os.Looper.loopOnce(Looper.java:266)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at android.os.Looper.loop(Looper.java:361)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at android.app.ActivityThread.main(ActivityThread.java:10406)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at java.lang.reflect.Method.invoke(Native Method)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:675)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1002)
+10-18 23:27:17.564 28463 28463 E ContextConstructorHelper: Unable to create instance for HandlerThreadFactory
+10-18 23:27:17.643 28463 28535 E PendingMediaStoreSerializer: deserialize start
+10-18 23:27:17.643 28463 28535 E PendingMediaStoreSerializer: start reading pending media
+10-18 23:27:17.643 28463 28535 E PendingMediaStoreSerializer: Set the submedia on albums
+10-18 23:27:17.644 28463 28535 E PendingMediaStoreSerializer: Set the submedia on chain owners
+10-18 23:27:17.644 28463 28535 E PendingMediaStoreSerializer: Set the submedia on story templates
+10-18 23:27:17.644 28463 28535 E PendingMediaStoreSerializer: Set the submedia on Basel templates
+10-18 23:27:17.644 28463 28535 E PendingMediaStoreSerializer: deserialize is done. start calling callbacks
+10-18 23:27:17.644 28463 28535 E PendingMediaStoreSerializer: deserialize end
+10-18 23:27:17.685 28463 28463 E PendingMediaStoreSerializer: wait for deserialization lock
+10-18 23:27:17.686 28463 28463 E PendingMediaStoreSerializer: calling callbacks
+10-18 23:27:17.747 28463 28646 E msys    : E[N mns:DGWClient]onResolverSuccess(367)=>Cache refresh succeeded with system DNS resolver. IP count: 2
+10-18 23:27:17.820 28463 28646 E msys    : E[N mns:DGWClient]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:17.820 28463 28646 E msys    : E[N mns:DGWClient]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:17.820 28463 28646 E msys    : E[N mns:DGWClient]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=3, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:17.861 28463 28610 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:17.861 28463 28610 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:17.872 28463 28646 E msys    : E[N mns:DGWClient]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:17.961 28463 28610 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:17.962 28463 28646 E msys    : E[N mns:DGWClient]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=2
+10-18 23:27:18.066 28463 28646 E msys    : E[N mns:DGWClient]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=2
+10-18 23:27:18.098  2623  2663 E Finsky  : [472] Gil log event does not have a valid logging context key.
+10-18 23:27:18.115 28463 28646 E msys    : E[N mns:DGWClient]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=2
+10-18 23:27:18.197 28463 28610 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:18.236 28463 28610 E msys    : E[N mns:TigonMNS]onResolverSuccess(367)=>Cache refresh succeeded with system DNS resolver. IP count: 2
+10-18 23:27:18.244 28463 28610 E msys    : E[N mns:TigonMNS]onResolverSuccess(367)=>Cache refresh succeeded with system DNS resolver. IP count: 2
+10-18 23:27:18.245 28463 28610 E msys    : E[N mns:TigonMNS]onResolverSuccess(367)=>Cache refresh succeeded with system DNS resolver. IP count: 2
+10-18 23:27:18.245 28463 28610 E msys    : E[N mns:TigonMNS]onResolverSuccess(367)=>Cache refresh succeeded with system DNS resolver. IP count: 2
+10-18 23:27:18.300 28463 28610 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=0
+10-18 23:27:18.301 28463 28610 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=0
+10-18 23:27:18.301 28463 28610 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=3, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=0
+10-18 23:27:18.315 28463 28610 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=0
+10-18 23:27:18.315 28463 28610 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=0
+10-18 23:27:18.315 28463 28610 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=3, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=0
+10-18 23:27:18.648  2623  2666 E Finsky  : [473] Gil log event does not have a valid logging context key.
+10-18 23:27:18.977  2623  2669 E Finsky  : [474] Gil log event does not have a valid logging context key.
+10-18 23:27:22.102  2623  2623 E AbstractLogEventBuilder: The provided ProductIdOrigin 3 is not one of the process-level expected values: 1 or 2
+10-18 23:27:22.103  2623  2623 E AbstractLogEventBuilder: The provided ProductIdOrigin 3 is not one of the process-level expected values: 1 or 2
+10-18 23:27:22.158  2623 28084 E AbstractLogEventBuilder: The provided ProductIdOrigin 3 is not one of the process-level expected values: 1 or 2
+10-18 23:27:22.679  2623  2663 E Finsky  : [472] Gil log event does not have a valid logging context key.
+10-18 23:27:23.706 16641 17123 E msys    : E[N mns:DGWClient]findTransactionByStreamID(241)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=4
+10-18 23:27:23.714 16641 17375 E msys    : E[N MQTT]readErr(151)=>TCPStreamTransport readErr
+10-18 23:27:23.714 16641 17375 E msys    : E[N MQTT]onReadError(657)=>Read Error: AsyncSocketException: recv() failed (peer=[2a03:2880:f369:90:face:b00c:0:8e]:443), type = Internal error, errno = 103 (Software caused connection abort)
+10-18 23:27:23.749 16641 16641 E SlowAppComponent: 0ms: FbnsInitBroadcastReceiver instantiating…
+10-18 23:27:23.749 16641 16641 E SlowAppComponent: 22ms: CrossSigningService instantiating…
+10-18 23:27:23.749 16641 16641 E SlowAppComponent: Main thread was blocked for 28ms in the background starting with FbnsInitBroadcastReceiver
+10-18 23:27:23.878 28463 28610 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=11, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:24.230 28463 28610 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:24.233 28463 28610 E msys    : E[N mns:TigonMNS]findTransactionByStreamID(243)=>findTransactionByStreamID null for streamID=7, isClosedOrFailedOrShutdown=0, ongoingTransactionsCount=1
+10-18 23:27:24.295  2623  2669 E Finsky  : [474] [Counters] attempted to use a non-positive increment for: 4752
+10-18 23:27:24.307  2623  2660 E Finsky  : [471] [Counters] attempted to use a non-positive increment for: 4753
+10-18 23:27:24.596 28852 28852 E ndroid.keychain: BBinder_init Processname  <pre-initialized>  
+10-18 23:27:24.646 28852 28852 E ndroid.keychain: BBinder_init Processname  <pre-initialized>  
+10-18 23:27:24.673  2623  2669 E Finsky  : [474] [Counters] attempted to use a non-positive increment for: 4752
+10-18 23:27:24.675  2623  2666 E Finsky  : [473] [Counters] attempted to use a non-positive increment for: 4753
+10-18 23:27:24.740  2623  2666 E Finsky  : [473] [Counters] attempted to use a non-positive increment for: 4752
+10-18 23:27:24.751  2623  2666 E Finsky  : [473] [Counters] attempted to use a non-positive increment for: 4753
+10-18 23:27:24.825 28852 28852 E ndroid.keychain: BBinder_init Processname  com.android.keychain  
+10-18 23:27:24.825 28852 28852 E ndroid.keychain: BBinder_init hasGetProcessName  com.android.keychain
+10-18 23:27:30.555  2623  2669 E AbstractLogEventBuilder: The provided ProductIdOrigin 3 is not one of the process-level expected values: 1 or 2
+10-18 23:27:30.555  2623 28087 E AbstractLogEventBuilder: The provided ProductIdOrigin 3 is not one of the process-level expected values: 1 or 2
+10-18 23:27:31.343 29128 29128 E bagam.khatalite: BBinder_init Processname  com.shebagam.khatalite  
+10-18 23:27:31.343 29128 29128 E bagam.khatalite: BBinder_init hasGetProcessName  com.shebagam.khatalite
+10-18 23:27:31.801 29128 29187 E Gralloc5: Failed to load mapper.mediatek.so
+10-18 23:27:31.824 29128 29128 E bagam.khatalite: [perfctl] 29128 29128 FPSGO ver:7
+10-18 23:27:31.824 29128 29128 E bagam.khatalite: [perfctl] 1 1 1 0
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: FATAL EXCEPTION: pool-4-thread-1
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: Process: com.shebagam.khatalite, PID: 29128
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: java.lang.NoClassDefFoundError: Failed resolution of: Lexpo/modules/kotlin/types/AnyTypeProvider;
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at expo.modules.imagemanipulator.ImageManipulatorModule.definition(ImageManipulatorModule.kt:164)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at expo.modules.kotlin.ModuleHolder.<init>(ModuleHolder.kt:22)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at expo.modules.kotlin.ModuleRegistry.register(ModuleRegistry.kt:29)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at expo.modules.kotlin.ModuleRegistry.register(ModuleRegistry.kt:45)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at expo.modules.kotlin.AppContext.<init>(AppContext.kt:131)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at expo.modules.kotlin.KotlinInteropModuleRegistry.<init>(KotlinInteropModuleRegistry.kt:18)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at expo.modules.adapters.react.NativeModulesProxy.<init>(NativeModulesProxy.java:45)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at expo.modules.adapters.react.ModuleRegistryAdapter.getOrCreateNativeModulesProxy(ModuleRegistryAdapter.java:140)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at expo.modules.adapters.react.ModuleRegistryAdapter.createNativeModules(ModuleRegistryAdapter.java:65)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at expo.modules.ExpoModulesPackage.createNativeModules(ExpoModulesPackage.kt:35)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.ReactPackageTurboModuleManagerDelegate.initialize(ReactPackageTurboModuleManagerDelegate.kt:64)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.ReactPackageTurboModuleManagerDelegate.<init>(ReactPackageTurboModuleManagerDelegate.kt:42)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.defaults.DefaultTurboModuleManagerDelegate.<init>(DefaultTurboModuleManagerDelegate.kt:35)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.defaults.DefaultTurboModuleManagerDelegate.<init>(Unknown Source:0)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.defaults.DefaultTurboModuleManagerDelegate$Builder.build(DefaultTurboModuleManagerDelegate.kt:63)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.defaults.DefaultTurboModuleManagerDelegate$Builder.build(DefaultTurboModuleManagerDelegate.kt:43)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.ReactPackageTurboModuleManagerDelegate$Builder.build(ReactPackageTurboModuleManagerDelegate.kt:222)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.ReactInstance.<init>(ReactInstance.kt:183)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.ReactHostImpl.getOrCreateReactInstanceTask$lambda$45$lambda$41(ReactHostImpl.kt:1052)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.ReactHostImpl.$r8$lambda$SmdYI7igN6ETqUXjl3FigYM4DHc(Unknown Source:0)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.ReactHostImpl$$ExternalSyntheticLambda43.then(D8$$SyntheticClass:0)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$Companion.completeImmediately$lambda$3(Task.kt:360)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$Companion.$r8$lambda$b7MTC0ufkn_2TjF4BGcNqGR9qK0(Unknown Source:0)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$Companion$$ExternalSyntheticLambda3.run(D8$$SyntheticClass:0)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Executors$ImmediateExecutor.execute(Executors.kt:41)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$Companion.completeImmediately(Task.kt:358)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$Companion.access$completeImmediately(Task.kt:254)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task.continueWith(Task.kt:133)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task.continueWith$default(Task.kt:117)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task.onSuccess$lambda$12(Task.kt:176)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task.$r8$lambda$l0wwo5AvbHxlwfI1R7CH_codxoo(Unknown Source:0)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$$ExternalSyntheticLambda2.then(D8$$SyntheticClass:0)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$Companion.completeAfterTask$lambda$5(Task.kt:394)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$Companion.$r8$lambda$IPpysnehFwANEiW061YzapkMdoE(Unknown Source:0)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at com.facebook.react.runtime.internal.bolts.Task$Companion$$ExternalSyntheticLambda4.run(D8$$SyntheticClass:0)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	at java.lang.Thread.run(Thread.java:1564)
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: Caused by: java.lang.ClassNotFoundException: expo.modules.kotlin.types.AnyTypeProvider
+10-18 23:27:31.916 29128 29180 E AndroidRuntime: 	... 38 more
