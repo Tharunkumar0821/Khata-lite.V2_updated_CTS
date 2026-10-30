@@ -117,6 +117,8 @@ export function EntrySheet({ entry, defaultType, partyType, onSave, onDelete, on
   const [bills, setBills] = useState(entry ? entry.bills || [] : []);
   const [err, setErr] = useState('');
   const added = useRef([]); // photos picked in this session, for cleanup on cancel
+  const [viewIndex, setViewIndex] = useState(null); // which photo is open in the viewer
+  const [rev, setRev] = useState(0); // bumped after the viewer closes so rotated thumbnails reload
   const c = useTheme();
 
   const addPhoto = async (source) => {
@@ -151,6 +153,7 @@ export function EntrySheet({ entry, defaultType, partyType, onSave, onDelete, on
   const isYesterday = date === daysAgoStr(1);
 
   return (
+    <>
     <Sheet title={entry ? 'Edit entry' : entryLabel(type, partyType)} onClose={cancel}>
       <Seg
         value={type} onChange={setType}
@@ -225,13 +228,20 @@ export function EntrySheet({ entry, defaultType, partyType, onSave, onDelete, on
 
       <SectionLabel>{bills.length ? `Bill photos \u00B7 ${bills.length}` : 'Bill photos'}</SectionLabel>
       {bills.length ? (
+        <Text style={{ ...T.caption, color: c.muted, marginBottom: space.sm }}>
+          Tap a photo to view, zoom or rotate it.
+        </Text>
+      ) : null}
+      {bills.length ? (
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.sm + 2, marginBottom: space.md }}>
-          {bills.map((name) => (
+          {bills.map((name, i) => (
             <View key={name} style={{ width: 78 }}>
-              <Image
-                source={{ uri: billUri(name) }}
-                style={{ width: 78, height: 78, borderRadius: radius.md, backgroundColor: c.lineSoft }}
-              />
+              <Pressable onPress={() => setViewIndex(i)} accessibilityRole="button" accessibilityLabel="View bill photo">
+                <Image
+                  source={{ uri: billUri(name) + (rev ? '?v=' + rev : '') }}
+                  style={{ width: 78, height: 78, borderRadius: radius.md, backgroundColor: c.lineSoft }}
+                />
+              </Pressable>
               <Pressable onPress={() => removePhoto(name)} hitSlop={6} style={{ marginTop: space.xs, alignItems: 'center' }}>
                 <Text style={{ ...T.caption, color: c.red, fontWeight: '700' }}>Remove</Text>
               </Pressable>
@@ -256,6 +266,17 @@ export function EntrySheet({ entry, defaultType, partyType, onSave, onDelete, on
         />
       </View>
     </Sheet>
+    {viewIndex !== null ? (
+      <BillViewer
+        bills={bills}
+        initialIndex={viewIndex}
+        partyName="Bill photos"
+        amountText="Preview before saving"
+        hideSend
+        onClose={() => { setViewIndex(null); setRev((r) => r + 1); }}
+      />
+    ) : null}
+    </>
   );
 }
 
@@ -396,10 +417,10 @@ function ViewerArrow({ label, onPress }) {
   );
 }
 
-export function BillViewer({ bills, partyName, partyPhone, amountText, onClose }) {
+export function BillViewer({ bills, partyName, partyPhone, amountText, onClose, initialIndex, hideSend }) {
   const insets = useSafeAreaInsets();
   const list = bills || [];
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(initialIndex || 0);
   const [bust, setBust] = useState({}); // name -> timestamp, to bust the image cache after a rotate
   const [rotating, setRotating] = useState(false);
 
@@ -483,7 +504,7 @@ export function BillViewer({ bills, partyName, partyPhone, amountText, onClose }
         <View style={{ flexDirection: 'row', gap: space.sm + 2, padding: space.lg }}>
           <Btn kind="ghost" label="Close" onPress={onClose} style={{ flex: 1 }} />
           <Btn kind="ghost" icon={'\u21BB'} label="Rotate" onPress={doRotate} busy={rotating} style={{ flex: 1 }} />
-          <Btn kind="green" icon={'\uD83D\uDCAC'} label="Send" onPress={send} style={{ flex: 1.2 }} />
+          {hideSend ? null : <Btn kind="green" icon={'\uD83D\uDCAC'} label="Send" onPress={send} style={{ flex: 1.2 }} />}
         </View>
       </View>
     </Modal>
