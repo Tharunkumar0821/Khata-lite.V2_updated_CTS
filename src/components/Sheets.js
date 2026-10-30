@@ -1,11 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { View, Text, Share, Image, Pressable, Modal, Alert } from 'react-native';
+import { View, Text, Share, Image, Pressable, Modal, Alert, Animated, PanResponder } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Sheet, Field, Seg, Btn, ErrorText, Chip, Note, SectionLabel, toast } from './ui';
 import { useTheme, space, radius, type as T, elevate } from '../theme';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { todayStr, daysAgoStr, dateStr, fdate, entryLabel } from '../utils';
-import ImageViewing from 'react-native-image-viewing';
 import { billUri, billExists, pickBill, deleteBill, rotateBill, sendToWhatsApp, collectBillNames, writeAllBillPhotos } from '../bills';
 import { pickContact } from '../contacts';
 import { saveBackupFile, loadBackupFile, backupErrorText } from '../backup';
@@ -260,6 +259,143 @@ export function EntrySheet({ entry, defaultType, partyType, onSave, onDelete, on
   );
 }
 
+// Pinch-to-zoom, drag-to-pan and double-tap-to-zoom image, built only from
+// React Native's own Animated and PanResponder. It deliberately uses no
+// third-party viewer library: the last one stopped working on this project's
+// very recent React Native version, and gesture code with no outside native
+// pieces has nothing left to go out of step.
+const MAX_ZOOM = 5;
+const DOUBLE_TAP_ZOOM = 2.5;
+
+function touchDistance(a, b) {
+  const dx = a.pageX - b.pageX;
+  const dy = a.pageY - b.pageY;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+function ZoomableImage({ uri }) {
+  const scale = useRef(new Animated.Value(1)).current;
+  const tx = useRef(new Animated.Value(0)).current;
+  const ty = useRef(new Animated.Value(0)).current;
+  const box = useRef({ w: 0, h: 0 });
+  const g = useRef({
+    s: 1, x: 0, y: 0,        // current zoom and offset
+    s0: 1, x0: 0, y0: 0,     // values when the current group of fingers landed
+    d0: 0, p0: null,         // starting pinch distance / single-finger start point
+    count: 0, moved: false, t0: 0, lastTap: 0,
+  }).current;
+
+  // Keeps a zoomed photo from being dragged completely off screen.
+  const clampOffset = (v, s, size) => {
+    const max = (size * (s - 1)) / 2;
+    return Math.max(-max, Math.min(max, v));
+  };
+
+  const apply = (s, x, y) => {
+    g.s = s; g.x = x; g.y = y;
+    scale.setValue(s); tx.setValue(x); ty.setValue(y);
+  };
+
+  const animateTo = (s, x, y) => {
+    g.s = s; g.x = x; g.y = y;
+    Animated.parallel([
+      Animated.timing(scale, { toValue: s, duration: 180, useNativeDriver: true }),
+      Animated.timing(tx, { toValue: x, duration: 180, useNativeDriver: true }),
+      Animated.timing(ty, { toValue: y, duration: 180, useNativeDriver: true }),
+    ]).start();
+  };
+
+  // Called whenever the number of fingers on the screen changes, so the
+  // gesture continues smoothly from wherever the photo currently is.
+  const rebase = (touches) => {
+    g.count = touches.length;
+    g.s0 = g.s; g.x0 = g.x; g.y0 = g.y;
+    g.d0 = touches.length >= 2 ? touchDistance(touches[0], touches[1]) : 0;
+    g.p0 = touches.length === 1 ? { x: touches[0].pageX, y: touches[0].pageY } : null;
+  };
+
+  const finish = () => {
+    const quick = !g.moved && Date.now() - g.t0 < 300;
+    g.count = 0;
+    if (quick) {
+      const now = Date.now();
+      if (now - g.lastTap < 320) {
+        g.lastTap = 0;
+        if (g.s > 1.05) animateTo(1, 0, 0); else animateTo(DOUBLE_TAP_ZOOM, 0, 0);
+      } else {
+        g.lastTap = now;
+      }
+      return;
+    }
+    // Pinched out past the original size: snap back to fit the screen.
+    if (g.s < 1.02 && (g.s !== 1 || g.x !== 0 || g.y !== 0)) animateTo(1, 0, 0);
+  };
+
+  const responder = useRef(null);
+  if (!responder.current) {
+    responder.current = PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderTerminationRequest: () => false,
+      onPanResponderGrant: (e) => {
+        g.moved = false;
+        g.t0 = Date.now();
+        rebase(e.nativeEvent.touches);
+      },
+      onPanResponderMove: (e) => {
+        const touches = e.nativeEvent.touches;
+        if (touches.length !== g.count) {
+          if (touches.length > 1) g.moved = true;
+          rebase(touches);
+          return;
+        }
+        if (touches.length >= 2) {
+          if (g.d0 > 0) {
+            const ns = Math.max(1, Math.min(MAX_ZOOM, (g.s0 * touchDistance(touches[0], touches[1])) / g.d0));
+            const k = ns / g.s0;
+            apply(ns, clampOffset(g.x0 * k, ns, box.current.w), clampOffset(g.y0 * k, ns, box.current.h));
+            g.moved = true;
+          }
+        } else if (touches.length === 1 && g.p0) {
+          const dx = touches[0].pageX - g.p0.x;
+          const dy = touches[0].pageY - g.p0.y;
+          if (Math.abs(dx) + Math.abs(dy) > 8) g.moved = true;
+          if (g.s > 1) {
+            apply(g.s, clampOffset(g.x0 + dx, g.s, box.current.w), clampOffset(g.y0 + dy, g.s, box.current.h));
+          }
+        }
+      },
+      onPanResponderRelease: () => finish(),
+      onPanResponderTerminate: () => finish(),
+    });
+  }
+
+  return (
+    <View
+      style={{ flex: 1, overflow: 'hidden' }}
+      onLayout={(e) => { box.current = { w: e.nativeEvent.layout.width, h: e.nativeEvent.layout.height }; }}
+      {...responder.current.panHandlers}
+    >
+      <Animated.Image
+        source={{ uri }}
+        resizeMode="contain"
+        style={{
+          width: '100%', height: '100%', resizeMode: 'contain',
+          transform: [{ translateX: tx }, { translateY: ty }, { scale }],
+        }}
+      />
+    </View>
+  );
+}
+
+function ViewerArrow({ label, onPress }) {
+  return (
+    <Pressable onPress={onPress} hitSlop={10} style={{ paddingHorizontal: space.md, paddingVertical: space.xl }}>
+      <Text style={{ color: '#fff', fontSize: 28, opacity: 0.85 }}>{label}</Text>
+    </Pressable>
+  );
+}
+
 export function BillViewer({ bills, partyName, partyPhone, amountText, onClose }) {
   const insets = useSafeAreaInsets();
   const list = bills || [];
@@ -311,16 +447,12 @@ export function BillViewer({ bills, partyName, partyPhone, amountText, onClose }
     );
   }
 
+  const current = images[safeIndex];
+
   return (
-    <ImageViewing
-      images={images}
-      imageIndex={safeIndex}
-      visible
-      onRequestClose={onClose}
-      onImageIndexChange={setIndex}
-      backgroundColor="#07090d"
-      HeaderComponent={() => (
-        <View style={{ paddingHorizontal: space.lg, paddingTop: insets.top + space.sm, paddingBottom: space.sm }}>
+    <Modal animationType="fade" onRequestClose={onClose} statusBarTranslucent navigationBarTranslucent>
+      <View style={{ flex: 1, backgroundColor: '#07090d', paddingTop: insets.top, paddingBottom: insets.bottom }}>
+        <View style={{ paddingHorizontal: space.lg, paddingVertical: space.md }}>
           <Text numberOfLines={1} style={{ ...T.body, fontWeight: '700', color: '#fff' }}>{partyName}</Text>
           <Text style={{ ...T.caption, color: '#b9c2d2', marginTop: 1 }}>{amountText}</Text>
           {images.length > 1 || missingCount ? (
@@ -330,19 +462,31 @@ export function BillViewer({ bills, partyName, partyPhone, amountText, onClose }
               {missingCount ? `${missingCount} more not on this phone` : ''}
             </Text>
           ) : null}
-          <Text style={{ ...T.caption, color: '#5e6b80', marginTop: 4 }}>Pinch or double-tap to zoom</Text>
         </View>
-      )}
-      FooterComponent={() => (
-        <View style={{ paddingHorizontal: space.lg, paddingTop: space.sm, paddingBottom: space.lg + insets.bottom }}>
-          <View style={{ flexDirection: 'row', gap: space.sm + 2 }}>
-            <Btn kind="ghost" label="Close" onPress={onClose} style={{ flex: 1 }} />
-            <Btn kind="ghost" icon={'\u21BB'} label="Rotate" onPress={doRotate} busy={rotating} style={{ flex: 1 }} />
-            <Btn kind="green" icon={'\uD83D\uDCAC'} label="Send" onPress={send} style={{ flex: 1.2 }} />
+
+        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+          {images.length > 1 ? (
+            <ViewerArrow label={'\u2039'} onPress={() => setIndex((safeIndex - 1 + images.length) % images.length)} />
+          ) : null}
+          <View style={{ flex: 1, height: '100%' }}>
+            {/* keyed by uri, so the zoom resets when you change or rotate a photo */}
+            <ZoomableImage key={current.uri} uri={current.uri} />
           </View>
+          {images.length > 1 ? (
+            <ViewerArrow label={'\u203A'} onPress={() => setIndex((safeIndex + 1) % images.length)} />
+          ) : null}
         </View>
-      )}
-    />
+
+        <Text style={{ ...T.caption, color: '#5e6b80', textAlign: 'center', paddingTop: space.sm }}>
+          Pinch or double-tap to zoom, drag to move when zoomed
+        </Text>
+        <View style={{ flexDirection: 'row', gap: space.sm + 2, padding: space.lg }}>
+          <Btn kind="ghost" label="Close" onPress={onClose} style={{ flex: 1 }} />
+          <Btn kind="ghost" icon={'\u21BB'} label="Rotate" onPress={doRotate} busy={rotating} style={{ flex: 1 }} />
+          <Btn kind="green" icon={'\uD83D\uDCAC'} label="Send" onPress={send} style={{ flex: 1.2 }} />
+        </View>
+      </View>
+    </Modal>
   );
 }
 
